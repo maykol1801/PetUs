@@ -456,6 +456,154 @@ body {
 }
 
 
+
+/* Sección CTA: Marketplace con fondo decorativo */
+.shop-cta {
+    background-color: #fdebd0; /* Fondo pastel */
+    padding: 50px 20px;
+    position: relative; /* Para las figuras decorativas */
+    border-radius: 15px; /* Bordes suaves */
+    margin: 40px auto;
+    max-width: 1200px; /* Ancho máximo */
+    overflow: hidden; /* Evita desbordes */
+    height: 400px; /* Altura fija del banner */
+    display: flex; /* Asegura que los elementos internos respeten el diseño */
+    align-items: center;
+}
+
+/* Contenedor principal */
+.shop-container {
+    display: flex;
+    align-items: center; /* Centrado vertical */
+    justify-content: space-between; /* Texto a la izquierda, imagen a la derecha */
+    gap: 20px;
+    width: 100%;
+    position: relative; /* Para las decoraciones */
+    z-index: 1; /* Asegura que el contenido esté sobre las formas */
+}
+
+/* Texto */
+.shop-text {
+    flex: 1;
+    z-index: 2; /* Asegura que el texto quede encima de las formas */
+    text-align: left; /* Alineación izquierda */
+    color: #06283D; /* Azul oscuro */
+}
+
+.shop-text h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.shop-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.shop-button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start; /* Alineamos el botón a la izquierda */
+}
+
+.shop-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #d4a373; /* Marrón claro */
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shop-button:hover {
+    background-color: #ba8a5e; /* Marrón oscuro */
+    transform: scale(1.05); /* Efecto al pasar el mouse */
+}
+
+/* Imagen */
+.shop-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2; /* Imagen por encima de las formas */
+}
+
+.shop-image img {
+    max-width: 500px; /* Imagen más prominente */
+    height: auto;
+    border-radius: 15px;
+    transform: scale(1.3); /* Aumentar tamaño */
+    transition: transform 0.3s ease;
+}
+
+/* Formas decorativas */
+.shop-cta::before,
+.shop-cta::after,
+.shop-cta .shop-deco {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0; /* Detrás del contenido */
+}
+
+.shop-cta::before {
+    width: 120px;
+    height: 120px;
+    top: -20px;
+    left: -20px;
+    background-color: #ffd29d; /* Amarillo pastel */
+}
+
+.shop-cta::after {
+    width: 150px;
+    height: 150px;
+    bottom: -30px;
+    right: -30px;
+    background-color: #d4a373; /* Marrón claro */
+}
+
+.shop-cta .shop-deco {
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    background-color: #b3d9ff; /* Azul pastel */
+    z-index: 1; /* Formas debajo del contenido */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .shop-container {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        text-align: center; /* Centra el texto */
+    }
+
+    .shop-text {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .shop-image {
+        margin-top: 20px;
+    }
+
+    .shop-image img {
+        max-width: 240px; /* Imagen más pequeña en dispositivos móviles */
+        transform: scale(1.1); /* Ajustar escala en pantallas pequeñas */
+    }
+}
+
+
+
 /* Footer pastel */
 .dark-footer {
     background-color: #fdebd0; /* Fondo pastel */
