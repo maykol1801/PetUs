@@ -51,21 +51,67 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px; /* Espacio entre los botones */
     margin: 0;
     padding: 0;
+}
+
+.nav-links li {
+    position: relative; /* Necesario para animaciones */
+}
+
+.nav-links li:not(:last-child)::after {
+    content: '|'; /* Agrega el separador */
+    margin-left: 15px;
+    color: #d4a373; /* Color del separador */
 }
 
 .nav-links li a {
     text-decoration: none;
     color: #333;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease-in-out; /* Suaviza la animación */
+    position: relative; /* Para los efectos de hover */
 }
 
 .nav-links li a:hover {
-    color: #d4a373;
+    color: #d4a373; /* Cambia el color al pasar el mouse */
 }
+
+/* Estilo para el carrito de compras */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre Mi Cuenta y el carrito */
+}
+
+.cart-icon {
+    height: 2rem; /* Ajusta el tamaño del carrito */
+    width: auto; /* Mantiene la proporción del ícono */
+    cursor: pointer; /* Apunta como un botón */
+    transition: transform 0.3s ease; /* Añade animación */
+}
+
+.cart-icon:hover {
+    transform: scale(1.2); /* Aumenta el tamaño al pasar el mouse */
+}
+
+/* Animación al pasar el mouse */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    background-color: #d4a373;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links li a:hover::after {
+    width: 100%; /* Línea debajo del texto */
+}
+
 
 .navbar .cta-button {
     background-color: #d4a373;
@@ -84,23 +130,42 @@ body {
 
 /* Hero Section */
 .hero {
-    background: url('https://img.freepik.com/fotos-premium/perros-gatos-que-miran-escondidas-sobre-banner-tienda-mascotas-linea-superior-madera-transparente-feliz-sonrisa-divertido-ia-generativa-weber_31965-181298.jpg?w=900') no-repeat center/center;
-    background-size: contain; /* Asegura que la imagen completa se vea */
-    background-color: #fdf5e6; /* Fondo de respaldo en caso de que la imagen no cargue */
-    color: #fff;
+    background: url('./imagenes/pets2.avif') no-repeat center; /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra el contenedor */
+    color: #fff; /* Hace el texto blanco */
     text-align: center;
+    position: relative; /* Permite el overlay y el texto */
     padding: 120px 20px;
-    height: 500px; /* Aumenta el alto del hero para que se ajuste a la imagen */
+    height: 450px; /* Altura del Hero */
+    overflow: hidden; /* Asegura que no haya desbordamiento */
+}
+
+.hero::before {
+    content: ''; /* Crea el overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Capa oscura translúcida */
+    z-index: 1; /* Coloca el overlay debajo del texto */
+}
+
+.hero-content {
+    position: relative; /* Asegura que el texto esté sobre el overlay */
+    z-index: 2; /* Eleva el texto sobre el overlay */
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Añade sombra al texto para mayor legibilidad */
 }
 
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra en el texto */
 }
 
 .hero-content .cta-button {
@@ -118,72 +183,64 @@ body {
     background-color: #ba8a5e;
 }
 
+.logo {
+    display: flex;
+    align-items: center; /* Alinea el texto y la imagen verticalmente */
+    gap: 10px; /* Espacio entre el logo y el texto */
+}
+
+.logo-img {
+    height: 4rem; /* Haz el logo más grande */
+    width: auto; /* Mantén la proporción del logo */
+}
+
+
 /* Features Section */
 .features {
-    padding: 40px 20px;
+    background-color: #fdebd0; /* Color piel pastel */
+    position: relative;
+    padding: 80px 20px;
+    color: #333; /* Cambia el color del texto a un tono oscuro para buen contraste */
     text-align: center;
+    overflow: hidden; /* Evita cualquier desbordamiento */
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sutil sombra para dar profundidad */
 }
 
 .features-grid {
     display: flex;
     justify-content: center;
     gap: 20px;
+    position: relative;
 }
 
 .feature-item {
-    background-color: #fffbe7;
+    background-color: #fff; /* Fondo blanco para los elementos individuales */
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 8px;
-}
-
-/* Catalog Section */
-.catalog {
-    padding: 40px 20px;
-}
-
-.catalog-grid {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.catalog-item {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para que destaquen */
+    color: #333; /* Color de texto para contraste */
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.catalog-item img {
-    max-width: 150px;
-    border-radius: 8px;
+.feature-item:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Mayor sombra al hacer hover */
 }
 
-.paypal-button {
-    background-color: #0070ba;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-top: 10px;
+.feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
-/* Register Section */
-.register {
-    padding: 40px 20px;
-    background-color: #fff;
-    text-align: center;
-}
-
-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-form input, form button {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.feature-item p {
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 /* Footer */
