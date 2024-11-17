@@ -12,7 +12,7 @@
         <nav class="navbar">
             <div class="logo">
                 <img src="./imagenes/PTuLogo.png" alt="PetUs Logo" class="logo-img">
-                PetUs
+                <span>PetUs</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#features">Beneficios</a></li>
@@ -26,27 +26,32 @@
             </div>
         </nav>
         <div class="carousel">
+            <!-- Diapositiva 1 -->
             <div class="carousel-slide active">
-                <img src="./imagenes/pets1.jpg" alt="Perros y gatos felices">
+                <img src="./imagenes/pets1.avif" alt="Perros y gatos felices">
                 <div class="carousel-text">
                     <h1>¡Bienvenido a PetUs!</h1>
-                    <p>Encuentra todo lo que tu mascota necesita.</p>
+                    <p>Todo lo que tu mascota necesita, al alcance de un clic.</p>
                 </div>
             </div>
+            <!-- Diapositiva 2 -->
             <div class="carousel-slide">
-                <img src="./imagenes/pets2.jpg" alt="Cachorro jugando">
+                <img src="./imagenes/pets2.avif" alt="Cachorro jugando">
                 <div class="carousel-text">
                     <h1>Cuida a tu mejor amigo</h1>
-                    <p>Productos diseñados para su bienestar.</p>
+                    <p>Productos diseñados para su bienestar y comodidad.</p>
                 </div>
             </div>
+            <!-- Diapositiva 3 -->
             <div class="carousel-slide">
-                <img src="./imagenes/pets3.jpg" alt="Mascotas en casa">
+                <img src="./imagenes/juguetes1.jpg" alt="Mascotas en casa">
                 <div class="carousel-text">
                     <h1>Lo mejor para tus mascotas</h1>
-                    <p>Calidad y amor en cada detalle.</p>
+                    <p>Calidad y amor en cada detalle. Porque ellos lo merecen.</p>
+                    <p>Solo lo mejor para tu peludito.</p>
                 </div>
             </div>
+            <!-- Controles del carrusel -->
             <div class="carousel-buttons">
                 <button class="prev">‹</button>
                 <button class="next">›</button>
@@ -58,30 +63,101 @@
     <section class="features">
         <h2>¿Por qué elegir PetUs?</h2>
         <div class="features-grid">
-            <div class="feature-item">
+            <div class="feature-item" data-banner="calidad">
                 <h3>Productos de calidad</h3>
                 <p>Solo los mejores productos para tus amigos peludos.</p>
             </div>
-            <div class="feature-item">
+            <div class="feature-item" data-banner="envios">
                 <h3>Envíos rápidos</h3>
                 <p>Recibe tus pedidos en tiempo récord.</p>
             </div>
-            <div class="feature-item">
+            <div class="feature-item" data-banner="soporte">
                 <h3>Soporte 24/7</h3>
                 <p>Estamos aquí para ayudarte siempre.</p>
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <footer class="contact">
-        <h2>Conéctate con nosotros</h2>
-        <div class="social-icons">
-            <i class="icon-facebook"></i>
-            <i class="icon-twitter"></i>
-            <i class="icon-instagram"></i>
+    
+<!-- Sección: Productos de calidad -->
+<section class="intro-section" id="intro-calidad">
+    <div class="intro-container">
+        <div class="intro-image">
+            <img src="./imagenes/mujerperro1.png" alt="Productos de calidad" id="intro-banner-image-calidad">
         </div>
-    </footer>
+        <div class="intro-text">
+            <h2 id="intro-title-calidad">Productos de calidad</h2>
+            <p id="intro-description-calidad">
+                Ofrecemos productos seleccionados cuidadosamente para garantizar el bienestar y la felicidad de tus mascotas.
+                Calidad en cada detalle, porque sabemos que ellos son parte de tu familia.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Sección: Envíos rápidos -->
+<section class="intro-section hidden reverse-layout" id="intro-envios">
+    <div class="intro-container">
+        <div class="intro-text">
+            <h2 id="intro-title-envios">Envíos rápidos</h2>
+            <p id="intro-description-envios">
+                Recibe tus pedidos en tiempo récord con nuestro sistema de envíos confiables y seguros. 
+                Cuidamos cada detalle para que lo que necesites llegue hasta tu puerta sin demoras.
+            </p>
+        </div>
+        <div class="intro-image">
+            <img src="./imagenes/hombreperro1.png" alt="Envíos rápidos" id="intro-banner-image-envios">
+        </div>
+    </div>
+</section>
+
+<!-- Sección: Soporte 24/7 -->
+<section class="intro-section hidden" id="intro-soporte">
+    <div class="intro-container">
+        <div class="intro-image">
+            <img src="./imagenes/mujerperro2.png" alt="Soporte 24/7" id="intro-banner-image-soporte">
+        </div>
+        <div class="intro-text">
+            <h2 id="intro-title-soporte">Soporte 24/7</h2>
+            <p id="intro-description-soporte">
+                Estamos disponibles para ayudarte en cualquier momento del día. 
+                Tu tranquilidad es nuestra prioridad, porque sabemos que el bienestar de tus mascotas es lo más importante.
+            </p>
+        </div>
+    </div>
+</section> 
+
+<footer class="dark-footer">
+    <!-- Izquierda: Derechos reservados y advertencia -->
+    <div class="footer-left">
+        <p>© 2024 PetUs. All rights reserved.</p>
+        <p class="footer-warning">El contenido de este sitio web es solo para fines informativos.</p>
+    </div>
+
+    <!-- Centro: Logo y texto destacado -->
+    <div class="footer-center">
+        <img src="./imagenes/PTuLogo.png" alt="PetUs Logo">
+        <p>PetUs</p>
+    </div>
+
+    <!-- Derecha: Título y redes sociales -->
+    <div class="footer-right">
+        <h3>Contáctanos</h3>
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook">
+                <img src="./imagenes/facebook.png" alt="Facebook">
+            </a>
+            <a href="#" aria-label="Instagram">
+                <img src="./imagenes/instagram.png" alt="Instagram">
+            </a>
+            <a href="#" aria-label="Twitter">
+                <img src="./imagenes/x.webp" alt="Twitter">
+            </a>
+            <a href="#" aria-label="YouTube">
+                <img src="./imagenes/youtube.png" alt="YouTube">
+            </a>
+        </div>
+    </div>
+</footer>
 
     <script src="script.js"></script>
 </body>

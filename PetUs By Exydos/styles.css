@@ -130,58 +130,124 @@ body {
 
 /* Hero Section */
 .hero {
-    background: url('./imagenes/pets2.avif') no-repeat center; /* Imagen de fondo */
-    background-size: cover; /* Asegura que la imagen cubra el contenedor */
-    color: #fff; /* Hace el texto blanco */
-    text-align: center;
-    position: relative; /* Permite el overlay y el texto */
-    padding: 120px 20px;
-    height: 450px; /* Altura del Hero */
-    overflow: hidden; /* Asegura que no haya desbordamiento */
+    position: relative; /* Asegura que todo el contenido dentro del hero esté posicionado correctamente */
+    width: 100%;
+    height: 450px; /* Fija la altura del contenedor */
+    overflow: hidden; /* Evita desbordamientos */
+    background-color: #fdf5e6; /* Fondo claro */
 }
 
+/* Fondo de respaldo para garantizar que no haya espacios vacíos */
 .hero::before {
-    content: ''; /* Crea el overlay */
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Capa oscura translúcida */
-    z-index: 1; /* Coloca el overlay debajo del texto */
+    background-color: #fdf5e6; /* Mismo color que el contenedor del carrusel */
+    z-index: 0;
 }
 
-.hero-content {
-    position: relative; /* Asegura que el texto esté sobre el overlay */
-    z-index: 2; /* Eleva el texto sobre el overlay */
+/* Carrusel */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Se ajusta automáticamente a la altura del hero */
+    overflow: hidden;
 }
 
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Añade sombra al texto para mayor legibilidad */
+/* Diapositivas */
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 100%; /* Diapositivas fuera de la vista al iniciar */
+    width: 100%;
+    height: 100%;
+    background-color: #fdf5e6; /* Fondo de respaldo */
+    transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transiciones suaves */
+    opacity: 0; /* Inicialmente ocultas */
+    z-index: 0; /* Las diapositivas ocultas estarán por detrás */
 }
 
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra en el texto */
+.carousel-slide.active {
+    left: 0; /* Visible */
+    opacity: 1; /* Mostrada completamente */
+    z-index: 2; /* La diapositiva activa estará al frente */
 }
 
-.hero-content .cta-button {
-    background-color: #d4a373;
+/* Imágenes dentro de las diapositivas */
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que las imágenes ocupen todo el espacio del contenedor */
+    background-color: #fdf5e6; /* Fondo de respaldo para las imágenes */
+}
+
+/* Overlay oscuro detrás del texto */
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+    z-index: 1; /* Colocado detrás del texto */
+}
+
+/* Texto */
+.carousel-text {
+    position: absolute;
+    top: 40%; /* Ajusta el texto más arriba */
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: #fff;
-    padding: 15px 30px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
+    text-align: center;
+    z-index: 3; /* Sobre la imagen y el overlay */
 }
 
-.hero-content .cta-button:hover {
-    background-color: #ba8a5e;
+.carousel-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
+
+.carousel-text p {
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Flechas de navegación */
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 4; /* Sobre las diapositivas */
+}
+
+.carousel-buttons button {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 2rem; /* Tamaño grande para las flechas */
+    transition: background-color 0.3s ease;
+}
+
+.carousel-buttons button:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Más oscuro al pasar el mouse */
+}
+
+/* Ocultar diapositivas completamente si no están activas */
+.carousel-slide.hidden {
+    display: none;
+}
+
 
 .logo {
     display: flex;
@@ -242,17 +308,254 @@ body {
     font-size: 1rem;
     line-height: 1.6;
 }
+.feature-item {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-/* Footer */
-.contact {
-    background-color: #d4a373;
-    color: #fff;
-    padding: 20px;
+.feature-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Sección Intro */
+/* Sección Intro con formas de olas */
+/* Clase para ocultar con animación de desvanecimiento */
+.fade-out {
+    opacity: 0;
+    transform: translateY(10px); /* Movimiento hacia abajo para suavizar */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Clase para mostrar con animación de desvanecimiento */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0); /* Posición original */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Clase para ocultar sin ocupar espacio */
+.hidden {
+    display: none;
+}
+
+.intro-section {
+    position: relative;
+    overflow: hidden;
+    background: #fdf5e6; /* Color de fondo claro */
+    margin: 40px auto;
+    padding: 40px 20px;
+    border-radius: 15px;
+}
+
+/* Formas de las olas */
+.intro-section::before,
+.intro-section::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150px;
+    background: #b0d7ff; /* Azul claro para las olas */
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.intro-section::before {
+    top: -75px;
+    left: -25%;
+}
+
+.intro-section::after {
+    bottom: -75px;
+    right: -25%;
+}
+
+/* Animación opcional para las olas */
+.intro-section:hover::before,
+.intro-section:hover::after {
+    transform: scale(1.1);
+}
+
+
+
+/* Banner Intro */
+.intro-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    transition: all 0.5s ease-in-out; /* Suaviza cambios generales */
+}
+
+.intro-image img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 15px;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Suaviza cambios en imagen */
+}
+
+.intro-text {
+    flex: 1;
+    text-align: left;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Suaviza texto */
+}
+
+.intro-text h2, .intro-text p {
+    opacity: 1; /* Transparencia inicial */
+    transform: translateY(0); /* Posición inicial */
+}
+
+.intro-text.hidden, .intro-image.hidden img {
+    opacity: 0; /* Oculta con transparencia */
+    transform: translateY(20px); /* Mueve ligeramente hacia abajo al desaparecer */
+}
+
+/* Transiciones */
+.intro-text.hidden h2, .intro-text.hidden p {
+    opacity: 0;
+    transform: translateY(-20px); /* Mueve ligeramente hacia arriba al aparecer */
+}
+/* Alineación predeterminada: Imagen a la izquierda, texto a la derecha */
+.intro-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo para la disposición invertida: Imagen a la derecha, texto a la izquierda */
+.reverse-layout .intro-container {
+    flex-direction: row-reverse; /* Invierte el orden de los elementos */
+}
+
+/* Imagen y texto ajustables */
+.intro-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.intro-text {
+    flex: 1;
+    text-align: left;
+}
+
+.intro-text h2 {
+    font-size: 2rem;
+    color: #06283D; /* Azul oscuro */
+    margin-bottom: 10px;
+}
+
+.intro-text p {
+    font-size: 1.2rem;
+    color: #2C394B; /* Azul grisáceo */
+    line-height: 1.6;
+}
+
+
+/* Footer pastel */
+.dark-footer {
+    background-color: #fdebd0; /* Fondo pastel */
+    color: #333; /* Texto oscuro */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    font-family: 'Poppins', Arial, sans-serif;
+    display: flex;
+    flex-direction: row; /* Alineación horizontal */
+    align-items: center; /* Centrado vertical */
+    justify-content: space-between; /* Espaciado entre las 3 secciones */
+    position: relative;
     text-align: center;
 }
 
-.social-icons i {
-    margin: 0 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
+/* Izquierda: Derechos reservados y advertencia */
+.footer-left {
+    flex: 1; /* Ocupa espacio proporcional */
+    text-align: left; /* Alineado a la izquierda */
+    margin-left: 40px; /* Separación desde el borde */
+}
+
+.footer-left p {
+    font-size: 0.9rem;
+    margin: 5px 0; /* Separación entre líneas */
+    color: #555; /* Color tenue */
+}
+
+.footer-warning {
+    font-size: 0.8rem;
+    color: #a94442; /* Advertencia en rojo claro */
+}
+
+/* Centro: Logo y texto */
+.footer-center {
+    flex: 1; /* Ocupa espacio proporcional */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar logo y texto */
+    justify-content: center;
+}
+
+.footer-center img {
+    height: 100px; /* Tamaño ajustado del logo */
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.footer-center p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+    color: #d4a373; /* Marrón claro */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Derecha: Contáctanos y redes sociales */
+.footer-right {
+    flex: 1; /* Ocupa espacio proporcional */
+    text-align: right; /* Alineado a la derecha */
+    margin-right: 40px; /* Separación desde el borde */
+}
+
+.footer-right h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px; /* Espaciado entre iconos */
+    justify-content: flex-end;
+}
+
+.footer-social a img {
+    width: 30px; /* Tamaño uniforme de los iconos */
+    height: 30px;
+    transition: transform 0.3s ease; /* Efecto de zoom */
+}
+
+.footer-social a:hover img {
+    transform: scale(1.2); /* Zoom al pasar el mouse */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .dark-footer {
+        flex-direction: column; /* Cambia a disposición en columna en pantallas pequeñas */
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left, .footer-right {
+        margin: 10px 0; /* Espaciado vertical */
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
 }
