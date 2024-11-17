@@ -1,0 +1,201 @@
+/* Reset completo para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Eliminación de márgenes en las capas raíz */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Evita desplazamientos horizontales */
+}
+
+/* Forzamos que el header comience en el borde superior */
+header.hero {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #fdf5e6;
+    color: #333;
+    line-height: 1.5; /* Controla el espaciado entre líneas */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdf5e6;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d4a373;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #d4a373;
+}
+
+.navbar .cta-button {
+    background-color: #d4a373;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .cta-button:hover {
+    background-color: #ba8a5e;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://img.freepik.com/fotos-premium/perros-gatos-que-miran-escondidas-sobre-banner-tienda-mascotas-linea-superior-madera-transparente-feliz-sonrisa-divertido-ia-generativa-weber_31965-181298.jpg?w=900') no-repeat center/center;
+    background-size: contain; /* Asegura que la imagen completa se vea */
+    background-color: #fdf5e6; /* Fondo de respaldo en caso de que la imagen no cargue */
+    color: #fff;
+    text-align: center;
+    padding: 120px 20px;
+    height: 500px; /* Aumenta el alto del hero para que se ajuste a la imagen */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-content .cta-button {
+    background-color: #d4a373;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.hero-content .cta-button:hover {
+    background-color: #ba8a5e;
+}
+
+/* Features Section */
+.features {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature-item {
+    background-color: #fffbe7;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Catalog Section */
+.catalog {
+    padding: 40px 20px;
+}
+
+.catalog-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.catalog-item {
+    text-align: center;
+}
+
+.catalog-item img {
+    max-width: 150px;
+    border-radius: 8px;
+}
+
+.paypal-button {
+    background-color: #0070ba;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Register Section */
+.register {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form button {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Footer */
+.contact {
+    background-color: #d4a373;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.social-icons i {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
