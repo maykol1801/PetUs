@@ -1,3 +1,4 @@
+
 // ----------- CARRUSEL -----------
 const slides = document.querySelectorAll('.carousel-slide'); // Selección de las diapositivas
 const prevButton = document.querySelector('.prev'); // Botón anterior
