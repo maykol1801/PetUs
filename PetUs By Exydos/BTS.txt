@@ -1,0 +1,107 @@
+Se esta utilizando SQL SERVER MANAGEMENT
+instalarlo en la carpeta C: para evitar desvergues
+
+para abrir el administrador usar C:\Windows\SysWOW64 y ahi buscar el SQLServerManager16
+
+
+-- taskkill /IM node.exe /F SIRVE PARA DETENER TODOS LOS PUERTOS DE NODE.js
+
+LISTA DE COSAS A TOMAR EN CUENTA::
+
+1. Instalar SQL Server y SQL Server Management Studio (SSMS)
+Descarga e instala SQL Server (puedes usar la versión Express si es para desarrollo).
+Durante la instalación:
+Selecciona "Mixed Mode Authentication" (Windows y SQL Authentication).
+Configura una contraseña para el usuario sa (administrador SQL).
+Instala SQL Server Management Studio (SSMS) desde el sitio oficial de Microsoft.
+
+
+
+
+Configurar SQL Server para aceptar conexiones locales y remotas
+Abre SQL Server Configuration Manager.
+Ve a "SQL Server Network Configuration" > "Protocols for SQLEXPRESS" (o tu instancia):
+Habilita "TCP/IP":
+Haz clic derecho en TCP/IP y selecciona Enable.
+Configura el puerto estático:
+Haz clic derecho en TCP/IP, selecciona Properties.
+Ve a la pestaña IP Addresses.
+En IPAll, asegúrate de:
+TCP Dynamic Ports: Está vacío.
+TCP Port: Pon 1433.
+Reinicia el servicio SQL Server:
+En el mismo SQL Server Configuration Manager, ve a SQL Server Services.
+Selecciona tu instancia (e.g., SQL Server (SQLEXPRESS)) y reiníciala.
+
+
+
+
+
+Instala el paquete en tu proyecto:
+bash
+Copiar código
+npm install mssql
+
+
+
+
+1. Instalar SQL Server y SQL Server Management Studio (SSMS)
+Descarga e instala SQL Server (puedes usar la versión Express si es para desarrollo).
+Durante la instalación:
+Selecciona "Mixed Mode Authentication" (Windows y SQL Authentication).
+Configura una contraseña para el usuario sa (administrador SQL).
+Instala SQL Server Management Studio (SSMS) desde el sitio oficial de Microsoft.
+
+2. Configurar SQL Server para aceptar conexiones locales y remotas
+Abre SQL Server Configuration Manager.
+Ve a "SQL Server Network Configuration" > "Protocols for SQLEXPRESS" (o tu instancia):
+Habilita "TCP/IP":
+Haz clic derecho en TCP/IP y selecciona Enable.
+Configura el puerto estático:
+Haz clic derecho en TCP/IP, selecciona Properties.
+Ve a la pestaña IP Addresses.
+En IPAll, asegúrate de:
+TCP Dynamic Ports: Está vacío.
+TCP Port: Pon 1433.
+
+Reinicia el servicio SQL Server:
+En el mismo SQL Server Configuration Manager, ve a SQL Server Services.
+Selecciona tu instancia (e.g., SQL Server (SQLEXPRESS)) y reiníciala.
+3. Crear un usuario SQL Server (para no depender del sa)
+Abre SQL Server Management Studio (SSMS) y conéctate a tu servidor.
+Ve a Security > Logins:
+Haz clic derecho en Logins > New Login.
+En Login Name, escribe un nombre (e.g., petus_user).
+Selecciona SQL Server Authentication y crea una contraseña.
+Desmarca Enforce password policy (opcional para desarrollo).
+Ve a User Mapping:
+Asigna al usuario acceso a tu base de datos (e.g., petus).
+Dale los roles db_owner o al menos db_datawriter y db_datareader.
+
+
+
+
+Probar el servidor
+Inicia tu servidor:
+bash
+Copiar código
+node server.js
+Desde tu navegador, prueba tu aplicación (e.g., http://localhost:3000).
+
+
+
+Resolución de problemas comunes
+Error EADDRINUSE (puerto en uso):
+Verifica qué está usando el puerto 3000 con:
+bash
+Copiar código
+netstat -ano | findstr :3000
+Luego mata el proceso con:
+bash
+Copiar código
+taskkill /PID <PID> /F
+Error ENOCONN (sin conexión):
+Asegúrate de que TCP/IP esté habilitado y el puerto esté correcto.
+Error Failed to fetch en el navegador:
+Verifica que el servidor esté corriendo (node server.js).
+Asegúrate de que tu fetch tenga la URL correcta (http://localhost:3000/api/login).

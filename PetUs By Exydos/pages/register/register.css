@@ -1,0 +1,353 @@
+/* Reset completo para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Eliminación de márgenes en las capas raíz */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Evita desplazamientos horizontales */
+}
+
+/* Forzamos que el header comience en el borde superior */
+header.hero {
+    margin: 0; /* Elimina márgenes */
+    padding: 0; /* Elimina paddings */
+    position: relative;
+    width: 100%;
+    height: auto; /* Asegúrate de que la altura no sea excesiva */
+}
+
+
+/* General Styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #fdf5e6;
+    color: #333;
+    line-height: 1.5; /* Controla el espaciado entre líneas */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdf5e6;
+    padding: 10px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d4a373;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Espacio entre los botones */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative; /* Necesario para animaciones */
+}
+
+.nav-links li:not(:last-child)::after {
+    content: '|'; /* Agrega el separador */
+    margin-left: 15px;
+    color: #d4a373; /* Color del separador */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out; /* Suaviza la animación */
+    position: relative; /* Para los efectos de hover */
+}
+
+.nav-links li a:hover {
+    color: #d4a373; /* Cambia el color al pasar el mouse */
+}
+
+/* Estilo para el carrito de compras */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre Mi Cuenta y el carrito */
+}
+
+.cart-icon {
+    height: 2rem; /* Ajusta el tamaño del carrito */
+    width: auto; /* Mantiene la proporción del ícono */
+    cursor: pointer; /* Apunta como un botón */
+    transition: transform 0.3s ease; /* Añade animación */
+}
+
+.cart-icon:hover {
+    transform: scale(1.2); /* Aumenta el tamaño al pasar el mouse */
+}
+
+/* Animación al pasar el mouse */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    background-color: #d4a373;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links li a:hover::after {
+    width: 100%; /* Línea debajo del texto */
+}
+
+
+.navbar .cta-button {
+    background-color: #d4a373;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .cta-button:hover {
+    background-color: #ba8a5e;
+}
+
+/* Hero Section */
+.hero {
+    position: relative; /* Asegura que todo el contenido dentro del hero esté posicionado correctamente */
+    width: 100%;
+    height: 450px; /* Fija la altura del contenedor */
+    overflow: hidden; /* Evita desbordamientos */
+    background-color: #fdf5e6; /* Fondo claro */
+}
+
+/* Fondo de respaldo para garantizar que no haya espacios vacíos */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fdf5e6; /* Mismo color que el contenedor del carrusel */
+    z-index: 0;
+}
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* Resta el espacio del header y footer */
+    padding: 20px;
+    background-image: url('/imagenes/registerbg.avif');
+    background-size: cover; /* Hace que la imagen cubra el área del contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: rgba(253, 245, 230, 0.9);
+}
+
+
+.register-box {
+    background-color: #fdebd0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+}
+
+.register-box h2 {
+    color: #8a6d3b;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: #8a6d3b;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.register-button {
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-button:hover {
+    background-color: #ba8a5e;
+}
+
+/* Footer */
+.dark-footer {
+    background-color: #fdebd0; /* Fondo pastel */
+    color: #333;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer-left, .footer-center, .footer-right {
+    flex: 1 1 300px;
+    margin: 10px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center; /* Alinea el texto y la imagen verticalmente */
+    gap: 10px; /* Espacio entre el logo y el texto */
+}
+
+.logo-img {
+    height: 4rem; /* Haz el logo más grande */
+    width: auto; /* Mantén la proporción del logo */
+}
+
+
+/* Footer pastel */
+.dark-footer {
+    background-color: #fdebd0; /* Fondo pastel */
+    color: #333; /* Texto oscuro */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    font-family: 'Poppins', Arial, sans-serif;
+    display: flex;
+    flex-direction: row; /* Alineación horizontal */
+    align-items: center; /* Centrado vertical */
+    justify-content: space-between; /* Espaciado entre las 3 secciones */
+    position: relative;
+    text-align: center;
+}
+
+/* Izquierda: Derechos reservados y advertencia */
+.footer-left {
+    flex: 1; /* Ocupa espacio proporcional */
+    text-align: left; /* Alineado a la izquierda */
+    margin-left: 40px; /* Separación desde el borde */
+}
+
+.footer-left p {
+    font-size: 0.9rem;
+    margin: 5px 0; /* Separación entre líneas */
+    color: #555; /* Color tenue */
+}
+
+.footer-warning {
+    font-size: 0.8rem;
+    color: #a94442; /* Advertencia en rojo claro */
+}
+
+/* Centro: Logo y texto */
+.footer-center {
+    flex: 1; /* Ocupa espacio proporcional */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar logo y texto */
+    justify-content: center;
+}
+
+.footer-center img {
+    height: 100px; /* Tamaño ajustado del logo */
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.footer-center p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+    color: #d4a373; /* Marrón claro */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Derecha: Contáctanos y redes sociales */
+.footer-right {
+    flex: 1; /* Ocupa espacio proporcional */
+    text-align: right; /* Alineado a la derecha */
+    margin-right: 40px; /* Separación desde el borde */
+}
+
+.footer-right h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px; /* Espaciado entre iconos */
+    justify-content: flex-end;
+}
+
+.footer-social a img {
+    width: 30px; /* Tamaño uniforme de los iconos */
+    height: 30px;
+    transition: transform 0.3s ease; /* Efecto de zoom */
+}
+
+.footer-social a:hover img {
+    transform: scale(1.2); /* Zoom al pasar el mouse */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .dark-footer {
+        flex-direction: column; /* Cambia a disposición en columna en pantallas pequeñas */
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left, .footer-right {
+        margin: 10px 0; /* Espaciado vertical */
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
