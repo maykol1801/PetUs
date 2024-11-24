@@ -44,10 +44,31 @@ body {
     z-index: 100;
 }
 
+/* Estilos para el logo */
 .logo {
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
     font-size: 1.8rem;
     font-weight: bold;
     color: #d4a373;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center; /* Alinea la imagen y el texto dentro del enlace */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+    text-decoration: none; /* Sin subrayado para el enlace */
+    color: #d4a373; /* Mantén el color original del texto */
+}
+
+.logo-link:hover {
+    text-decoration: none; /* Evita subrayado al pasar el mouse */
+    color: #ba8a5e; /* Cambio de color para el hover */
+}
+
+.logo-img {
+    height: 4rem; /* Tamaño del logo */
+    width: auto; /* Mantén la proporción del logo */
 }
 
 .nav-links {

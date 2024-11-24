@@ -44,10 +44,31 @@ body {
     z-index: 100;
 }
 
+/* Estilos para el logo */
 .logo {
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
     font-size: 1.8rem;
     font-weight: bold;
     color: #d4a373;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center; /* Alinea la imagen y el texto dentro del enlace */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+    text-decoration: none; /* Sin subrayado para el enlace */
+    color: #d4a373; /* Mantén el color original del texto */
+}
+
+.logo-link:hover {
+    text-decoration: none; /* Evita subrayado al pasar el mouse */
+    color: #ba8a5e; /* Cambio de color para el hover */
+}
+
+.logo-img {
+    height: 4rem; /* Tamaño del logo */
+    width: auto; /* Mantén la proporción del logo */
 }
 
 .nav-links {
@@ -137,6 +158,19 @@ body {
     height: 450px; /* Fija la altura del contenedor */
     overflow: hidden; /* Evita desbordamientos */
     background-color: #fdf5e6; /* Fondo claro */
+}
+
+/* Estilos para los enlaces del formulario de registro/inicio de sesión */
+.login-link a {
+    color: #8a6d3b; /* Color marrón suave, igual que el texto del formulario */
+    text-decoration: none; /* Eliminar subrayado */
+    font-weight: bold;
+    transition: color 0.3s ease-in-out; /* Transición suave al cambiar de color */
+}
+
+.login-link a:hover {
+    color: #ba8a5e; /* Color más oscuro al pasar el mouse */
+    text-decoration: underline; /* Subrayado solo en hover para indicar clic */
 }
 
 /* Fondo de respaldo para garantizar que no haya espacios vacíos */

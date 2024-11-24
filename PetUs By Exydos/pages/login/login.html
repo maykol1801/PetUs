@@ -11,18 +11,21 @@
     <header class="hero">
         <nav class="navbar">
             <div class="logo">
-                <img src="/imagenes/PTuLogo.png" alt="PetUs Logo" class="logo-img">
-                <span>PetUs</span>
+                <a href="/index.html" class="logo-link">
+                    <img src="/imagenes/PTuLogo.png" alt="PetUs Logo" class="logo-img">
+                    <span>PetUs</span>
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="#features">Beneficios</a></li>
-                <li><a href="#catalog">Catálogo</a></li>
+                <li><a href="/pages/marketplace/marketplace.html">Catálogo</a></li>
                 <li><a href="/pages/register/register.html">Crea tu cuenta</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
             <div class="navbar-right">
-                <button class="cta-button">Mi Cuenta</button>
-                <a href="/pages/login/login.html" class="cta-link"></a>
+                <a href="./pages/login/login.html" class="cta-link">
+                    <button class="cta-button">Mi Cuenta</button>
+                </a>
                 <img src="/imagenes/carrito.png" alt="Carrito de compras" class="cart-icon">
             </div>
         </nav>
@@ -44,7 +47,6 @@
                 <button type="submit" class="login-button">Iniciar Sesión</button>
                 <div id="error-message" style="display: none; color: red;"></div> <!-- Contenedor de errores -->
             </form>            
-            <a href="/recover-password" class="forgot-link">¿Olvidaste tu contraseña?</a>
             <p class="signup-link">¿No tienes cuenta? <a href="/pages/register/register.html">Regístrate aquí</a>.</p>
         </div>
     </div>
