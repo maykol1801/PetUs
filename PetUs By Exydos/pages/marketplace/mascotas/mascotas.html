@@ -38,55 +38,70 @@
             </p>
         </div>        
 
-        <div class="marketplace-container">
-            <!-- Filtros -->
-            <aside class="filters-section">
-                <h2>Filtros</h2>
-                <div class="filter-group">
-                    <h3>Tipo de mascota</h3>
-                    <label>
-                        <input type="radio" name="pet-type" value="all" checked> Todos
-                    </label>
-                    <label>
-                        <input type="radio" name="pet-type" value="dog"> Perros
-                    </label>
-                    <label>
-                        <input type="radio" name="pet-type" value="cat"> Gatos
-                    </label>
-                </div>
-                <div class="filter-group">
-                    <h3>Precio</h3>
-                    <label for="min-price">Mín $</label>
-                    <input type="number" id="min-price" placeholder="0">
-                    <label for="max-price">Máx $</label>
-                    <input type="number" id="max-price" placeholder="1000">
-                    <button id="filter-price-btn">Filtrar</button>
-                </div>
-                <div class="filter-group">
-                    <h3>Ordenar por</h3>
-                    <select id="sort-options">
-                        <option value="default">Predeterminado</option>
-                        <option value="price-asc">Precio: Menor a Mayor</option>
-                        <option value="price-desc">Precio: Mayor a Menor</option>
-                        <option value="alpha-asc">Alfabético: A-Z</option>
-                        <option value="alpha-desc">Alfabético: Z-A</option>
-                    </select>
-                </div>
-            </aside>
-        
-            <!-- Tarjetas de productos -->
-            <div class="marketplace-grid">
-                <h1>Explora nuestras mascotas disponibles</h1>
-                <!-- Tarjetas individuales -->
-                <div class="product-card" data-stock="true">
-                    <img src="/imagenes/goldenretriever.webp" alt="Golden Retriever" class="product-image">
-                    <h2 class="product-title">Golden Retriever</h2>
-                    <p class="product-price">$800.00</p>
-                    <div class="product-stock">
-                        <span class="checkmark green">✔</span> En stock
-                    </div>
-                </div>
-                
+<!-- Banner de búsqueda -->
+<div class="search-banner">
+    <div class="search-banner-content">
+        <!-- Imagen a la izquierda -->
+        <img src="/imagenes/perrofeliz.png" alt="Imagen representativa" class="search-image">
+
+        <!-- Texto en el centro -->
+        <div class="search-text">
+            <h1>Encuentra tu mascota ideal</h1>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="marketplace-container">
+    <!-- Filtros -->
+    <aside class="filters-section">
+        <h2>Filtros</h2>
+        <div class="filter-group">
+            <h3>Tipo de mascota</h3>
+            <label>
+                <input type="radio" name="pet-type" value="all" checked> Todos
+            </label>
+            <label>
+                <input type="radio" name="pet-type" value="dog"> Perros
+            </label>
+            <label>
+                <input type="radio" name="pet-type" value="cat"> Gatos
+            </label>
+        </div>
+        <div class="filter-group">
+            <h3>Precio</h3>
+            <label for="min-price">Mín $</label>
+            <input type="number" id="min-price" placeholder="0">
+            <label for="max-price">Máx $</label>
+            <input type="number" id="max-price" placeholder="1000">
+            <button id="filter-price-btn">Filtrar</button>
+        </div>
+        <div class="filter-group">
+            <h3>Ordenar por</h3>
+            <select id="sort-options">
+                <option value="default">Predeterminado</option>
+                <option value="price-asc">Precio: Menor a Mayor</option>
+                <option value="price-desc">Precio: Mayor a Menor</option>
+                <option value="alpha-asc">Alfabético: A-Z</option>
+                <option value="alpha-desc">Alfabético: Z-A</option>
+            </select>
+        </div>
+    </aside>
+
+    <!-- Tarjetas de productos -->
+    <div class="marketplace-grid">
+        <!-- Tarjetas individuales -->
+        <div class="product-card" data-stock="true">
+            <img src="/imagenes/goldenretriever.webp" alt="Golden Retriever" class="product-image">
+            <h2 class="product-title">Golden Retriever</h2>
+            <p class="product-price">$800.00</p>
+            <div class="product-stock">
+                <span class="checkmark green">✔</span> En stock
+            </div>
+        </div>
+            
                     <div class="product-card" data-stock="true">
                         <img src="/imagenes/gatosiames.jpg" alt="Gato Siamés" class="product-image">
                         <h2 class="product-title">Gato Siamés</h2>
@@ -249,6 +264,8 @@
         </div>
     </footer>
 
-    <script type="module" src="/pages/marketplace/mascotas/mascotas.js"></script>
+    <script src="mascotas.js"></script>
 </body>
+
+
 </html>

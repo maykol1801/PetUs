@@ -403,3 +403,228 @@ body {
         justify-content: center;
     }
 }
+
+/* Mantenemos los resets y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Resto de estilos base igual... */
+
+/* Media Queries para diferentes tamaños de pantalla */
+
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 1024px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .logo-img {
+        height: 3rem;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-links li a {
+        font-size: 0.9rem;
+    }
+
+    .login-box {
+        max-width: 350px;
+    }
+
+    .footer-center img {
+        height: 80px;
+    }
+
+    .footer-center p {
+        font-size: 1.6rem;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media screen and (max-width: 768px) {
+    /* Navbar responsive */
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        display: none; /* Se mostrará con JavaScript */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li:not(:last-child)::after {
+        display: none; /* Elimina los separadores en móvil */
+    }
+
+    .navbar-right {
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    /* Menú hamburguesa */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: #d4a373;
+    }
+
+    /* Login responsive */
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-box {
+        max-width: 100%;
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .login-box h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Footer responsive */
+    .dark-footer {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+        flex: 1 1 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .footer-left {
+        margin-left: 0;
+    }
+
+    .footer-right {
+        margin-right: 0;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+/* Móviles */
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 2.5rem;
+    }
+
+    .login-box {
+        padding: 15px;
+    }
+
+    .login-box h2 {
+        font-size: 1.4rem;
+    }
+
+    .input-group input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .login-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .forgot-link, .signup-link a {
+        font-size: 12px;
+    }
+
+    .footer-center img {
+        height: 60px;
+    }
+
+    .footer-center p {
+        font-size: 1.4rem;
+    }
+
+    .footer-left p, .footer-warning {
+        font-size: 0.8rem;
+    }
+
+    .footer-social a img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Pantallas muy pequeñas */
+@media screen and (max-width: 320px) {
+    .login-box {
+        padding: 10px;
+    }
+
+    .login-box h2 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .input-group {
+        margin-bottom: 10px;
+    }
+
+    .input-group label {
+        font-size: 12px;
+    }
+
+    .input-group input {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .login-button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .footer-center p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .login-container {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .login-box {
+        margin: 20px 0;
+    }
+
+    .input-group {
+        margin-bottom: 10px;
+    }
+}

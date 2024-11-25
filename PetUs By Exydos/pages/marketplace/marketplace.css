@@ -415,3 +415,240 @@ body {
 footer.dark-footer {
     margin-top: auto;
 }
+
+
+/* Mantenemos todo el código CSS anterior y agregamos/modificamos los media queries */
+
+/* Media Queries para Responsive Design */
+
+/* Pantallas grandes y medianas */
+@media screen and (max-width: 1200px) {
+    .catalog-section {
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .catalog-link {
+        width: 250px;
+        height: 250px;
+    }
+
+    .catalog-text h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 1024px) {
+    /* Ajustes del navbar */
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .logo-img {
+        height: 3rem;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    /* Ajustes del catálogo */
+    .catalog-banner {
+        height: 350px;
+    }
+
+    .catalog-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .catalog-text p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Tablets pequeñas y dispositivos móviles grandes */
+@media screen and (max-width: 768px) {
+    /* Navbar responsive */
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 15px;
+        margin-top: 15px;
+        display: none; /* Oculto por defecto en móvil */
+    }
+
+    .nav-links.active {
+        display: flex; /* Se muestra cuando está activo */
+    }
+
+    .nav-links li:not(:last-child)::after {
+        display: none;
+    }
+
+    .navbar-right {
+        margin-top: 15px;
+    }
+
+    /* Ajustes del catálogo */
+    .catalog-section {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+
+    .catalog-link {
+        width: 280px;
+        height: 280px;
+    }
+
+    .catalog-banner {
+        height: 300px;
+    }
+
+    .catalog-text h1 {
+        font-size: 2rem;
+    }
+
+    .catalog-text p {
+        font-size: 1.1rem;
+    }
+
+    /* Footer ajustes */
+    .dark-footer {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+
+    .footer-left, .footer-right {
+        margin: 10px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-center img {
+        height: 80px;
+    }
+}
+
+/* Dispositivos móviles */
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 2.5rem;
+    }
+
+    /* Ajustes del banner del catálogo */
+    .catalog-banner {
+        height: 250px;
+    }
+
+    .catalog-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .catalog-text p {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    /* Ajustes de las tarjetas del catálogo */
+    .catalog-link {
+        width: 250px;
+        height: 250px;
+    }
+
+    .catalog-link .info-text {
+        font-size: 0.9rem;
+    }
+
+    .catalog-link:hover .info-text {
+        font-size: 1rem;
+    }
+
+    /* Footer ajustes adicionales */
+    .footer-center p {
+        font-size: 1.4rem;
+    }
+
+    .footer-left p, .footer-right p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media screen and (max-width: 320px) {
+    .catalog-link {
+        width: 220px;
+        height: 220px;
+    }
+
+    .catalog-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .catalog-banner {
+        height: 200px;
+    }
+
+    .footer-center p {
+        font-size: 1.2rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+}
+
+/* Ajustes para dispositivos con hover */
+@media (hover: hover) {
+    .nav-links li a:hover::after {
+        width: 100%;
+    }
+
+    .catalog-link:hover {
+        transform: translateY(-10px);
+    }
+
+    .footer-social a:hover img {
+        transform: scale(1.2);
+    }
+}
+
+/* Ajustes para dispositivos sin hover */
+@media (hover: none) {
+    .nav-links li a::after {
+        display: none;
+    }
+
+    .catalog-link:active {
+        transform: translateY(-5px);
+    }
+
+    .footer-social a:active img {
+        transform: scale(1.1);
+    }
+
+    .catalog-link .info-text {
+        opacity: 1;
+        font-size: 1rem;
+    }
+}

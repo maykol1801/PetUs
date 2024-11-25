@@ -385,3 +385,320 @@ body {
         justify-content: center;
     }
 }
+
+/* Reset completo para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Eliminación de márgenes en las capas raíz */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #fdf5e6;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdf5e6;
+    padding: 10px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+/* Estilos para el logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d4a373;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #d4a373;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+    color: #ba8a5e;
+}
+
+.logo-img {
+    height: 4rem;
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li:not(:last-child)::after {
+    content: '|';
+    margin-left: 15px;
+    color: #d4a373;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    background-color: #fdf5e6;
+}
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 20px;
+    background-image: url('/imagenes/registerbg.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(253, 245, 230, 0.9);
+}
+
+.register-box {
+    background-color: #fdebd0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Footer */
+.dark-footer {
+    background-color: #fdebd0;
+    color: #333;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer-left, .footer-center, .footer-right {
+    flex: 1 1 300px;
+    margin: 10px;
+}
+
+/* Media Queries para Responsive Design */
+
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 1024px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .logo-img {
+        height: 3rem;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-links li a {
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        height: 350px;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .logo-link {
+        margin-bottom: 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .nav-links li:not(:last-child)::after {
+        display: none;
+    }
+
+    .navbar-right {
+        margin-top: 15px;
+    }
+
+    .hero {
+        height: 300px;
+    }
+
+    .register-box {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .dark-footer {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+        flex: 1 1 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-right {
+        margin-right: 0;
+    }
+
+    .footer-left {
+        margin-left: 0;
+    }
+}
+
+/* Móviles */
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 2.5rem;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .nav-links li a {
+        font-size: 0.85rem;
+    }
+
+    .hero {
+        height: 250px;
+    }
+
+    .register-box {
+        padding: 15px;
+    }
+
+    .footer-center img {
+        height: 80px;
+    }
+
+    .footer-center p {
+        font-size: 1.4rem;
+    }
+
+    .input-group input {
+        padding: 8px;
+    }
+
+    .register-button {
+        padding: 8px 16px;
+    }
+}
+
+/* Para pantallas muy pequeñas */
+@media screen and (max-width: 320px) {
+    .logo {
+        font-size: 1rem;
+    }
+
+    .logo-img {
+        height: 2rem;
+    }
+
+    .nav-links li a {
+        font-size: 0.8rem;
+    }
+
+    .hero {
+        height: 200px;
+    }
+
+    .register-box {
+        padding: 10px;
+    }
+
+    .footer-center p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Agregar menú hamburguesa para móviles */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}

@@ -166,6 +166,54 @@ body {
     background-color: #fdf5e6;
 }
 
+
+/* Estilo del banner de búsqueda */
+/* Ajustar el tamaño de la imagen sin afectar el tamaño del banner */
+.search-image {
+    height: 120px; /* O el tamaño que desees */
+    width: 120px;  /* O el tamaño que desees */
+    object-fit: cover; /* Asegura que la imagen no se distorsione */
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    align-self: flex-start; /* Alinea la imagen al inicio del banner */
+}
+
+/* Limitar la altura del banner */
+.search-banner {
+    background-color: #2c3e50; /* Fondo oscuro */
+    color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px; /* Mantener una altura fija para el banner */
+}
+
+/* Asegurar que los elementos en el banner se mantengan alineados correctamente */
+.search-banner-content {
+    display: flex;
+    justify-content: space-between; /* Alinear los elementos en una fila */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Controlar el ancho máximo */
+}
+
+
+.search-text {
+    flex: 1; /* Toma el espacio restante entre la imagen y la barra de búsqueda */
+    text-align: center;
+}
+
+.search-banner h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+
+
 /* Estilo del banner de advertencia */
 .warning-banner {
     background-color: #ffefc5; /* Amarillo claro para destacar */
@@ -575,4 +623,207 @@ body {
 
 footer.dark-footer {
     margin-top: auto;
+}
+
+
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 1024px) {
+    /* Ajustes del navbar */
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .logo-img {
+        height: 3rem;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    /* Ajustes del grid de productos */
+    .marketplace-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+
+    /* Ajustes del contenedor principal */
+    .marketplace-container {
+        padding: 15px;
+    }
+}
+
+/* Tablets pequeñas y dispositivos móviles grandes */
+@media screen and (max-width: 768px) {
+    /* Navbar responsive */
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .nav-links li:not(:last-child)::after {
+        display: none;
+    }
+
+    .navbar-right {
+        margin-top: 15px;
+    }
+
+    /* Ajustes del contenedor principal */
+    .marketplace-container {
+        flex-direction: column;
+    }
+
+    .filters-section {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Ajuste del banner de búsqueda */
+    .search-banner {
+        height: auto;
+        padding: 20px;
+    }
+
+    .search-banner-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-image {
+        height: 80px;
+        width: 80px;
+        margin-right: 0;
+    }
+
+    .search-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+}
+
+/* Dispositivos móviles */
+@media screen and (max-width: 480px) {
+    /* Ajustes adicionales para móviles */
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 2.5rem;
+    }
+
+    /* Ajustes del grid de productos */
+    .marketplace-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* Ajustes del footer */
+    .footer-left, .footer-right {
+        margin: 10px;
+    }
+
+    .footer-center img {
+        height: 80px;
+    }
+
+    .footer-center p {
+        font-size: 1.4rem;
+    }
+
+    /* Ajustes de los banners */
+    .warning-banner {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .warning-banner p {
+        font-size: 0.9rem;
+    }
+
+    /* Ajustes de los filtros */
+    .filter-group select,
+    .filter-group input[type="number"] {
+        font-size: 16px; /* Previene el zoom en iOS */
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media screen and (max-width: 320px) {
+    .logo {
+        font-size: 1rem;
+    }
+
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-title {
+        font-size: 1rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+    }
+
+    .footer-center p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Ajustes para dispositivos con hover */
+@media (hover: hover) {
+    .nav-links li a:hover::after {
+        width: 100%;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .footer-social a:hover img {
+        transform: scale(1.2);
+    }
+}
+
+/* Ajustes para dispositivos sin hover */
+@media (hover: none) {
+    .nav-links li a::after {
+        display: none;
+    }
+
+    .product-card:active {
+        background-color: #f5f5dc;
+    }
+
+    .footer-social a:active img {
+        transform: scale(1.1);
+    }
 }
