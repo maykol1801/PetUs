@@ -11,10 +11,9 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow-x: hidden; /* Evita desplazamientos horizontales */
-    overflow-y: auto; /* Permite desplazamientos verticales si es necesario */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
-
 
 /* Forzamos que el header comience en el borde superior */
 header.hero {
@@ -23,24 +22,22 @@ header.hero {
     position: relative;
     top: 0;
     width: 100%;
-    height: auto; /* Asegúrate de que la altura no sea fija */
-    overflow: hidden; /* Evita cualquier desbordamiento */
-    background-color: #fdf5e6; /* Fondo claro */
+    height: auto;
+    overflow: hidden;
+    background-color: #fdf5e6;
 }
-
 
 /* General Styles */
 body {
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #fdf5e6;
     color: #333;
-    line-height: 1.5; /* Controla el espaciado entre líneas */
+    line-height: 1.5;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Altura mínima igual a la altura de la ventana */
-    margin: 0; /* Elimina márgenes adicionales */
+    min-height: 100vh;
+    margin: 0;
 }
-
 
 /* Navbar Styles */
 .navbar {
@@ -57,7 +54,7 @@ body {
 /* Estilos para el logo */
 .logo {
     display: flex;
-    align-items: center; /* Alinea verticalmente la imagen y el texto */
+    align-items: center;
     font-size: 1.8rem;
     font-weight: bold;
     color: #d4a373;
@@ -65,69 +62,68 @@ body {
 
 .logo-link {
     display: flex;
-    align-items: center; /* Alinea la imagen y el texto dentro del enlace */
-    gap: 10px; /* Espacio entre la imagen y el texto */
-    text-decoration: none; /* Sin subrayado para el enlace */
-    color: #d4a373; /* Mantén el color original del texto */
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #d4a373;
 }
 
 .logo-link:hover {
-    text-decoration: none; /* Evita subrayado al pasar el mouse */
-    color: #ba8a5e; /* Cambio de color para el hover */
+    text-decoration: none;
+    color: #ba8a5e;
 }
 
 .logo-img {
-    height: 4rem; /* Tamaño del logo */
-    width: auto; /* Mantén la proporción del logo */
+    height: 4rem;
+    width: auto;
 }
-
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px; /* Espacio entre los botones */
+    gap: 30px;
     margin: 0;
     padding: 0;
 }
 
 .nav-links li {
-    position: relative; /* Necesario para animaciones */
+    position: relative;
 }
 
 .nav-links li:not(:last-child)::after {
-    content: '|'; /* Agrega el separador */
+    content: '|';
     margin-left: 15px;
-    color: #d4a373; /* Color del separador */
+    color: #d4a373;
 }
 
 .nav-links li a {
     text-decoration: none;
     color: #333;
     font-size: 1rem;
-    transition: all 0.3s ease-in-out; /* Suaviza la animación */
-    position: relative; /* Para los efectos de hover */
+    transition: all 0.3s ease-in-out;
+    position: relative;
 }
 
 .nav-links li a:hover {
-    color: #d4a373; /* Cambia el color al pasar el mouse */
+    color: #d4a373;
 }
 
 /* Estilo para el carrito de compras */
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 20px; /* Espacio entre Mi Cuenta y el carrito */
+    gap: 20px;
 }
 
 .cart-icon {
-    height: 2rem; /* Ajusta el tamaño del carrito */
-    width: auto; /* Mantiene la proporción del ícono */
-    cursor: pointer; /* Apunta como un botón */
-    transition: transform 0.3s ease; /* Añade animación */
+    height: 2rem;
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .cart-icon:hover {
-    transform: scale(1.2); /* Aumenta el tamaño al pasar el mouse */
+    transform: scale(1.2);
 }
 
 /* Animación al pasar el mouse */
@@ -143,9 +139,8 @@ body {
 }
 
 .nav-links li a:hover::after {
-    width: 100%; /* Línea debajo del texto */
+    width: 100%;
 }
-
 
 .navbar .cta-button {
     background-color: #d4a373;
@@ -164,11 +159,11 @@ body {
 
 /* Hero Section */
 .hero {
-    position: relative; /* Asegura que todo el contenido dentro del hero esté posicionado correctamente */
+    position: relative;
     width: 100%;
-    height: 450px; /* Fija la altura del contenedor */
-    overflow: hidden; /* Evita desbordamientos */
-    background-color: #fdf5e6; /* Fondo claro */
+    height: 450px;
+    overflow: hidden;
+    background-color: #fdf5e6;
 }
 
 /* Fondo de respaldo para garantizar que no haya espacios vacíos */
@@ -179,7 +174,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fdf5e6; /* Mismo color que el contenedor del carrusel */
+    background-color: #fdf5e6;
     z-index: 0;
 }
 
@@ -187,15 +182,14 @@ body {
 .catalog-banner {
     position: relative;
     width: 100%;
-    height: 450px; /* Altura fija para el banner */
-    margin: 0; /* Elimina márgenes adicionales */
-    padding: 0; /* Elimina padding adicional */
+    height: 450px;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Evita desbordamientos */
+    overflow: hidden;
 }
-
 
 .catalog-banner::before {
     content: '';
@@ -204,16 +198,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Capa oscura para mejorar la legibilidad del texto */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
 
 .catalog-text {
     position: relative;
-    z-index: 2; /* Asegura que el texto esté por encima de la capa oscura */
+    z-index: 2;
     text-align: center;
-    color: #fff; /* Texto blanco para contraste */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra para mayor visibilidad */
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .catalog-text h1 {
@@ -227,32 +221,95 @@ body {
     font-weight: 300;
 }
 
-/* Asegura que el body ocupe toda la ventana */
-body {
+/* Sección de botones del catálogo */
+.catalog-section {
     display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Altura mínima igual a la altura de la ventana */
-    margin: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    list-style: none; /* Elimina los puntos de las listas */
+    padding: 0; /* Elimina cualquier padding adicional */
 }
+
+
+/* Estilo base para los enlaces */
+.catalog-link {
+    display: block; /* Permite que el enlace actúe como un contenedor */
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+/* Estilo específico para el primer enlace */
+.catalog-link:nth-child(1) {
+    background-image: url('/imagenes/mascotascatalogo.jpg');
+}
+
+/* Estilo específico para el segundo enlace */
+.catalog-link:nth-child(2) {
+    background-image: url('/imagenes/petarticles1.jpg');
+}
+
+/* Efectos al pasar el mouse */
+.catalog-link:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Texto adicional dentro de los enlaces */
+.catalog-link .info-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem; /* Ajusta el tamaño del texto */
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro para contraste */
+    padding: 8px 12px; /* Reduce el padding */
+    border-radius: 8px;
+    opacity: 0; /* Inicialmente oculto */
+    color: #ffffff;
+    transition: opacity 0.3s, font-size 0.3s; /* Suaviza los cambios de tamaño y visibilidad */
+}
+
+.catalog-link:hover .info-text {
+    opacity: 1;
+    font-size: 1.2rem; /* Aumenta ligeramente el tamaño al hacer hover */
+}
+
+
+
 
 /* Footer pastel */
 .dark-footer {
-    background-color: #fdebd0; /* Fondo pastel */
-    color: #333; /* Texto oscuro */
-    padding: 20px 0; /* Espaciado superior e inferior */
+    background-color: #fdebd0;
+    color: #333;
+    padding: 20px 0;
     font-family: 'Poppins', Arial, sans-serif;
     display: flex;
-    flex-direction: row; /* Alineación horizontal */
-    align-items: center; /* Centrado vertical */
-    justify-content: space-between; /* Espaciado entre las 3 secciones */
-    position: relative; /* Cambiamos a relative */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
     width: 100%;
-    z-index: 10; /* Asegura que esté por encima de otras capas */
-    margin-top: auto; /* Empuja el footer al final */
+    z-index: 10;
+    margin-top: auto;
     text-align: center;
 }
 
-/* Otros ajustes generales */
 footer.dark-footer .footer-center p {
     margin: 0;
     color: #d4a373;
@@ -260,33 +317,33 @@ footer.dark-footer .footer-center p {
 
 /* Izquierda: Derechos reservados y advertencia */
 .footer-left {
-    flex: 1; /* Ocupa espacio proporcional */
-    text-align: left; /* Alineado a la izquierda */
-    margin-left: 40px; /* Separación desde el borde */
+    flex: 1;
+    text-align: left;
+    margin-left: 40px;
 }
 
 .footer-left p {
     font-size: 0.9rem;
-    margin: 5px 0; /* Separación entre líneas */
-    color: #555; /* Color tenue */
+    margin: 5px 0;
+    color: #555;
 }
 
 .footer-warning {
     font-size: 0.8rem;
-    color: #a94442; /* Advertencia en rojo claro */
+    color: #a94442;
 }
 
 /* Centro: Logo y texto */
 .footer-center {
-    flex: 1; /* Ocupa espacio proporcional */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrar logo y texto */
+    align-items: center;
     justify-content: center;
 }
 
 .footer-center img {
-    height: 100px; /* Tamaño ajustado del logo */
+    height: 100px;
     width: auto;
     margin-bottom: 10px;
 }
@@ -295,16 +352,16 @@ footer.dark-footer .footer-center p {
     font-size: 1.8rem;
     font-weight: bold;
     margin: 0;
-    color: #d4a373; /* Marrón claro */
+    color: #d4a373;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
 
 /* Derecha: Contáctanos y redes sociales */
 .footer-right {
-    flex: 1; /* Ocupa espacio proporcional */
-    text-align: right; /* Alineado a la derecha */
-    margin-right: 40px; /* Separación desde el borde */
+    flex: 1;
+    text-align: right;
+    margin-right: 40px;
 }
 
 .footer-right h3 {
@@ -316,30 +373,30 @@ footer.dark-footer .footer-center p {
 
 .footer-social {
     display: flex;
-    gap: 10px; /* Espaciado entre iconos */
+    gap: 10px;
     justify-content: flex-end;
 }
 
 .footer-social a img {
-    width: 30px; /* Tamaño uniforme de los iconos */
+    width: 30px;
     height: 30px;
-    transition: transform 0.3s ease; /* Efecto de zoom */
+    transition: transform 0.3s ease;
 }
 
 .footer-social a:hover img {
-    transform: scale(1.2); /* Zoom al pasar el mouse */
+    transform: scale(1.2);
 }
 
 /* Responsividad */
 @media (max-width: 768px) {
     .dark-footer {
-        flex-direction: column; /* Cambia a disposición en columna en pantallas pequeñas */
+        flex-direction: column;
         align-items: center;
         text-align: center;
     }
 
     .footer-left, .footer-right {
-        margin: 10px 0; /* Espaciado vertical */
+        margin: 10px 0;
         text-align: center;
     }
 
@@ -350,11 +407,11 @@ footer.dark-footer .footer-center p {
 
 /* Asegura que el contenido de la página no interfiera con el footer */
 body {
-    min-height: 100vh; /* Asegura que el contenido ocupe toda la altura de la ventana */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 footer.dark-footer {
-    margin-top: auto; /* Empuja el footer al final de la página */
+    margin-top: auto;
 }
