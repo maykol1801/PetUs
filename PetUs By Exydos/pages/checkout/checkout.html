@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="https://www.paypal.com/sdk/js?client-id=AUa39CgXOhOkdLKEJ3btVBBfq0k1f7y4Qv1HmhKGK5ON7nFGHgH5aPRJXH_WOFX0iUkKEA0VcZkN0RKu&currency=USD"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - PetUs</title>
+    <link rel="stylesheet" href="/pages/checkout/checkout.css">
+</head>
+<body>
+    <!-- Contenedor principal para la estructura flexible -->
+    <div class="main-content">
+        <header class="hero">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="/index.html" class="logo-link">
+                        <img src="/imagenes/PTuLogo.png" alt="PetUs Logo" class="logo-img">
+                        <span>PetUs</span>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Beneficios</a></li>
+                    <li><a href="/pages/marketplace/marketplace.html">Catálogo</a></li>
+                    <li><a href="/pages/register/register.html">Crea tu cuenta</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+                <div class="navbar-right">
+                    <a href="/pages/login/login.html" class="cta-link">
+                        <button class="cta-button">Mi Cuenta</button>
+                    </a>
+                    <a href="/pages/checkout/checkout.html" class="cart-container">
+                        <img src="/imagenes/carrito.png" alt="Carrito de compras" class="cart-icon">
+                        <span class="cart-bubble">0</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Contenido principal del Checkout -->
+        <div class="checkout-container">
+            <!-- Columna izquierda: Formulario de envío -->
+            <div class="checkout-form">
+                <h2>Información de Envío</h2>
+                <form id="shipping-form">
+                    <!-- Dirección -->
+                    <div class="form-group">
+                        <label for="address">Dirección:</label>
+                        <input type="text" id="address" name="address" placeholder="Calle, número y colonia" required>
+                    </div>
+
+                    <!-- Ciudad -->
+                    <div class="form-group">
+                        <label for="city">Ciudad:</label>
+                        <input type="text" id="city" name="city" placeholder="Ciudad" required>
+                    </div>
+
+                    <!-- País -->
+                    <div class="form-group">
+                        <label for="country">País:</label>
+                        <select id="country" name="country" required>
+                            <option value="">Selecciona un país</option>
+                            <option value="mx">México</option>
+                            <option value="us">Estados Unidos</option>
+                            <option value="ca">Canadá</option>
+                        </select>
+                    </div>
+
+                    <!-- Código Postal -->
+                    <div class="form-group">
+                        <label for="postal-code">Código Postal:</label>
+                        <input type="text" id="postal-code" name="postal-code" placeholder="Código Postal" required>
+                    </div>
+
+                    <!-- Nombre completo -->
+                    <div class="form-group">
+                        <label for="full-name">Nombre completo:</label>
+                        <input type="text" id="full-name" name="full-name" placeholder="Tu nombre completo" required>
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div class="form-group">
+                        <label for="phone">Teléfono:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
+                    </div>
+
+                    <!-- Correo electrónico -->
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Columna derecha: Resumen de la compra -->
+            <div class="checkout-summary">
+                <h2>Resumen de tu Compra</h2>
+                <div id="cart-summary"></div>
+                <div class="cart-totals">
+                    <p>Subtotal: <span id="subtotal">$0.00</span></p>
+                    <p>Envío: <span id="shipping">$0.00</span></p>
+                    <p>Impuestos: <span id="taxes">$0.00</span></p>
+                    <p><strong>Total: <span id="total">$0.00</span></strong></p>
+                </div>
+                
+
+                <!-- Botón de Pagar -->
+                <div class="checkout-button">
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dark-footer">
+        <!-- Izquierda: Derechos reservados y advertencia -->
+        <div class="footer-left">
+            <p>© 2024 PetUs. All rights reserved.</p>
+            <p class="footer-warning">El contenido de este sitio web es solo para fines informativos.</p>
+        </div>
+
+        <!-- Centro: Logo y texto destacado -->
+        <div class="footer-center">
+            <img src="/imagenes/PTuLogo.png" alt="PetUs Logo">
+            <p>PetUs</p>
+        </div>
+
+        <!-- Derecha: Título y redes sociales -->
+        <div class="footer-right">
+            <h3>Contáctanos</h3>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">
+                    <img src="/imagenes/facebook.png" alt="Facebook">
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <img src="/imagenes/instagram.png" alt="Instagram">
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <img src="/imagenes/x.webp" alt="Twitter">
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <img src="/imagenes/youtube.png" alt="YouTube">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/pages/checkout/checkout.js"></script>
+    <script type="module" src="/global.js"></script>
+</body>
+</html>

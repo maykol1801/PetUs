@@ -625,6 +625,21 @@ body {
 }
 
 
+.cart-bubble {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: #d9534f; /* Rojo */
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: none; /* Oculto por defecto */
+}
+
+
+
 
 /* Footer pastel */
 .dark-footer {

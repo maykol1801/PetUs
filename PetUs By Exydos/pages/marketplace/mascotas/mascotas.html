@@ -27,8 +27,13 @@
                     <a href="/pages/login/login.html" class="cta-link">
                         <button class="cta-button">Mi Cuenta</button>
                     </a>
-                    <img src="/imagenes/carrito.png" alt="Carrito de compras" class="cart-icon">
-                </div>
+                    <div class="navbar-right">
+                        <div class="cart-container" style="position: relative;">
+                            <img src="/imagenes/carrito.png" alt="Carrito de compras" class="cart-icon">
+                            <!-- Aquí se insertará la burbuja con JS -->
+                        </div>
+                    </div>
+                    
             </nav>
         </header>
 
@@ -92,146 +97,281 @@
 
     <!-- Tarjetas de productos -->
     <div class="marketplace-grid">
-        <!-- Tarjetas individuales -->
+        <!-- Golden Retriever -->
         <div class="product-card" data-stock="true">
-            <img src="/imagenes/goldenretriever.webp" alt="Golden Retriever" class="product-image">
-            <h2 class="product-title">Golden Retriever</h2>
-            <p class="product-price">$800.00</p>
-            <div class="product-stock">
-                <span class="checkmark green">✔</span> En stock
-            </div>
-        </div>
-            
-                    <div class="product-card" data-stock="true">
-                        <img src="/imagenes/gatosiames.jpg" alt="Gato Siamés" class="product-image">
-                        <h2 class="product-title">Gato Siamés</h2>
-                        <p class="product-price">$500.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark green">✔</span> En stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="false">
-                        <img src="/imagenes/pastoraleman.jpg" alt="Pastor Alemán" class="product-image">
-                        <h2 class="product-title">Pastor Alemán</h2>
-                        <p class="product-price">$900.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark red">✘</span> Sin stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="true">
-                        <img src="/imagenes/beagle.avif" alt="Beagle" class="product-image">
-                        <h2 class="product-title">Beagle</h2>
-                        <p class="product-price">$750.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark green">✔</span> En stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="false">
-                        <img src="/imagenes/mainecoon.jpg" alt="Maine Coon" class="product-image">
-                        <h2 class="product-title">Maine Coon</h2>
-                        <p class="product-price">$1,000.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark red">✘</span> Sin stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="true">
-                        <img src="/imagenes/bulldogingles.webp" alt="Bulldog Inglés" class="product-image">
-                        <h2 class="product-title">Bulldog Inglés</h2>
-                        <p class="product-price">$1,000.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark green">✔</span> En stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="false">
-                        <img src="/imagenes/gatopersa.jpg" alt="Gato Persa" class="product-image">
-                        <h2 class="product-title">Gato Persa</h2>
-                        <p class="product-price">$700.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark red">✘</span> Sin stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="true">
-                        <img src="/imagenes/chihuahua.jpg" alt="Chihuahua" class="product-image">
-                        <h2 class="product-title">Chihuahua</h2>
-                        <p class="product-price">$600.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark green">✔</span> En stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="false">
-                        <img src="/imagenes/huskysiberiano.jpg" alt="Husky Siberiano" class="product-image">
-                        <h2 class="product-title">Husky Siberiano</h2>
-                        <p class="product-price">$1,200.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark red">✘</span> Sin stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="true">
-                        <img src="/imagenes/gatobengali.webp" alt="Gato Bengalí" class="product-image">
-                        <h2 class="product-title">Gato Bengalí</h2>
-                        <p class="product-price">$1,100.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark green">✔</span> En stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="true">
-                        <img src="/imagenes/dalmata.avif" alt="Dálmata" class="product-image">
-                        <h2 class="product-title">Dálmata</h2>
-                        <p class="product-price">$850.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark green">✔</span> En stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="false">
-                        <img src="/imagenes/gatoazulruso.jpg" alt="Gato Azul Ruso" class="product-image">
-                        <h2 class="product-title">Gato Azul Ruso</h2>
-                        <p class="product-price">$750.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark red">✘</span> Sin stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="true">
-                        <img src="/imagenes/corgi.jpg" alt="Corgi" class="product-image">
-                        <h2 class="product-title">Corgi</h2>
-                        <p class="product-price">$950.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark green">✔</span> En stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="true">
-                        <img src="/imagenes/gatoesfinge.jpg" alt="Gato Esfinge" class="product-image">
-                        <h2 class="product-title">Gato Esfinge</h2>
-                        <p class="product-price">$1,500.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark green">✔</span> En stock
-                        </div>
-                    </div>
-                
-                    <div class="product-card" data-stock="false">
-                        <img src="/imagenes/shitzu.webp" alt="Shih Tzu" class="product-image">
-                        <h2 class="product-title">Shih Tzu</h2>
-                        <p class="product-price">$700.00</p>
-                        <div class="product-stock">
-                            <span class="checkmark red">✘</span> Sin stock
-                        </div>
+            <div class="card-inner">
+                <!-- Frente -->
+                <div class="card-front">
+                    <img src="/imagenes/goldenretriever.webp" alt="Golden Retriever" class="product-image">
+                    <h2 class="product-title">Golden Retriever</h2>
+                    <p class="product-price">$800.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
                     </div>
                 </div>
+                <!-- Dorso -->
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Gato Siamés -->
+        <div class="product-card" data-stock="true">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/gatosiames.jpg" alt="Gato Siamés" class="product-image">
+                    <h2 class="product-title">Gato Siamés</h2>
+                    <p class="product-price">$500.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Pastor Alemán -->
+        <div class="product-card" data-stock="false">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/pastoraleman.jpg" alt="Pastor Alemán" class="product-image">
+                    <h2 class="product-title">Pastor Alemán</h2>
+                    <p class="product-price">$900.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark red">✘</span> Sin stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>No disponible</h3>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Beagle -->
+        <div class="product-card" data-stock="true">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/beagle.avif" alt="Beagle" class="product-image">
+                    <h2 class="product-title">Beagle</h2>
+                    <p class="product-price">$750.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Maine Coon -->
+        <div class="product-card" data-stock="false">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/mainecoon.jpg" alt="Maine Coon" class="product-image">
+                    <h2 class="product-title">Maine Coon</h2>
+                    <p class="product-price">$1,000.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark red">✘</span> Sin stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>No disponible</h3>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Bulldog Inglés -->
+        <div class="product-card" data-stock="true">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/bulldogingles.webp" alt="Bulldog Inglés" class="product-image">
+                    <h2 class="product-title">Bulldog Inglés</h2>
+                    <p class="product-price">$1,000.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Gato Persa -->
+        <div class="product-card" data-stock="false">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/gatopersa.jpg" alt="Gato Persa" class="product-image">
+                    <h2 class="product-title">Gato Persa</h2>
+                    <p class="product-price">$700.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark red">✘</span> Sin stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>No disponible</h3>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Chihuahua -->
+        <div class="product-card" data-stock="true">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/chihuahua.jpg" alt="Chihuahua" class="product-image">
+                    <h2 class="product-title">Chihuahua</h2>
+                    <p class="product-price">$600.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
                 
+        <div class="product-card" data-stock="false">
+            <div class="card-inner">
+                <!-- Frente -->
+                <div class="card-front">
+                    <img src="/imagenes/huskysiberiano.jpg" alt="Husky Siberiano" class="product-image">
+                    <h2 class="product-title">Husky Siberiano</h2>
+                    <p class="product-price">$1,200.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark red">✘</span> Sin stock
+                    </div>
+                </div>
+                <!-- Dorso -->
+                <div class="card-back">
+                    <h3>No disponible</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card" data-stock="true">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/gatobengali.webp" alt="Gato Bengalí" class="product-image">
+                    <h2 class="product-title">Gato Bengalí</h2>
+                    <p class="product-price">$1,100.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card" data-stock="true">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/dalmata.avif" alt="Dálmata" class="product-image">
+                    <h2 class="product-title">Dálmata</h2>
+                    <p class="product-price">$850.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card" data-stock="false">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/gatoazulruso.jpg" alt="Gato Azul Ruso" class="product-image">
+                    <h2 class="product-title">Gato Azul Ruso</h2>
+                    <p class="product-price">$750.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark red">✘</span> Sin stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>No disponible</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card" data-stock="true">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/corgi.jpg" alt="Corgi" class="product-image">
+                    <h2 class="product-title">Corgi</h2>
+                    <p class="product-price">$950.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card" data-stock="true">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/gatoesfinge.jpg" alt="Gato Esfinge" class="product-image">
+                    <h2 class="product-title">Gato Esfinge</h2>
+                    <p class="product-price">$1,500.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark green">✔</span> En stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Selecciona cantidad</h3>
+                    <input type="number" min="1" max="10" value="1" class="quantity-input">
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card" data-stock="false">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="/imagenes/shitzu.webp" alt="Shih Tzu" class="product-image">
+                    <h2 class="product-title">Shih Tzu</h2>
+                    <p class="product-price">$700.00</p>
+                    <div class="product-stock">
+                        <span class="checkmark red">✘</span> Sin stock
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>No disponible</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
 
     <!-- Footer -->
-    <footer class="dark-footer">
+     <footer class="dark-footer">
         <!-- Izquierda: Derechos reservados y advertencia -->
         <div class="footer-left">
             <p>© 2024 PetUs. All rights reserved.</p>
@@ -265,6 +405,7 @@
     </footer>
 
     <script src="mascotas.js"></script>
+    <script type="module" src="/global.js"></script>
 </body>
 
 
