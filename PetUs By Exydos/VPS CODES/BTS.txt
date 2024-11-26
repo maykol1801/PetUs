@@ -1,0 +1,21 @@
+
+LISTA DE COSAS A TOMAR EN CUENTA::
+
+
+se puso un firewall en la vps para permitir solamente los siguientes PUERTOS
+
+SSH (22) para la administración remota.
+HTTP (80) y HTTPS (443) para servir tu página web.
+
+
+ABRIR BASE DE DATOS EN LA vps
+
+sudo mysql -u root -p
+
+
+REINICIAR EL NODE
+
+pm2 restart petus-backend
+
+
+

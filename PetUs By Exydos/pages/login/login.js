@@ -1,39 +1,39 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('login-form');
-    const errorMessage = document.getElementById('error-message');
+document.getElementById("login-form").addEventListener("submit", async (event) => {
+    event.preventDefault(); // Evitar recarga de la página
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Evita el comportamiento predeterminado del formulario
+    const email = document.getElementById("email").value.trim();
+    const contraseña = document.getElementById("password").value.trim();
+    const errorMessage = document.getElementById("error-message");
 
-        // Captura los valores de los campos
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+    // Validar que los campos no estén vacíos
+    if (!email || !contraseña) {
+        errorMessage.textContent = "Por favor, llena ambos campos.";
+        errorMessage.style.display = "block";
+        return;
+    }
 
-        try {
-            // Enviar datos al servidor
-            const response = await fetch('http://localhost:3000/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
+    try {
+        const response = await fetch("http://167.114.114.208:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, contraseña }),
+        });
 
-            const data = await response.json(); // Parsear la respuesta del servidor
+        const data = await response.json();
 
-            if (response.ok) {
-                // Credenciales correctas
-                alert(data.message); // Mensaje de éxito
-                window.location.href = '/index.html'; // Redirigir al index
-            } else {
-                // Credenciales incorrectas
-                errorMessage.textContent = data.message || 'Credenciales inválidas.';
-                errorMessage.style.display = 'block';
-            }
-        } catch (error) {
-            console.error('Error al conectar con el servidor:', error);
-            errorMessage.textContent = 'Hubo un problema al conectar con el servidor.';
-            errorMessage.style.display = 'block';
+        if (response.ok) {
+            alert("Inicio de sesión exitoso");
+            // Redirigir al usuario
+            window.location.href = "/index.html";
+        } else {
+            errorMessage.textContent = data.error || "Error desconocido. Intenta más tarde.";
+            errorMessage.style.display = "block";
         }
-    });
+    } catch (error) {
+        console.error("Error al conectar con el servidor:", error);
+        errorMessage.textContent = "Hubo un problema. Inténtalo más tarde.";
+        errorMessage.style.display = "block";
+    }
 });
