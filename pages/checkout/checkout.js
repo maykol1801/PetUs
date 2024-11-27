@@ -69,6 +69,7 @@ document.addEventListener('click', (event) => {
 });
 
 // Inicializar el botón de PayPal
+// Función para inicializar el botón de PayPal
 function initializePayPalButton() {
     paypal.Buttons({
         // Configuración del botón
@@ -86,7 +87,51 @@ function initializePayPalButton() {
         onApprove: function (data, actions) {
             return actions.order.capture().then(function (details) {
                 alert('Pago completado con éxito por ' + details.payer.name.given_name);
-                // Aquí puedes procesar la orden o redirigir al usuario
+
+                // Obtener los detalles del formulario de envío
+                const shippingForm = document.getElementById('shipping-form');
+                const formData = new FormData(shippingForm);
+                const shippingData = {
+                    address: formData.get('address'),
+                    city: formData.get('city'),
+                    country: formData.get('country'),
+                    postalCode: formData.get('postal-code'),
+                    fullName: formData.get('full-name'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email')
+                };
+
+                // Obtener los artículos del carrito
+                const cartItems = JSON.parse(localStorage.getItem('carrito')) || [];
+                const productos = cartItems.map(item => ({
+                    nombre: item.titulo,
+                    cantidad: item.cantidad,
+                    precio: item.precio,
+                    total: item.precio * item.cantidad
+                }));
+
+                // Enviar los datos al backend para procesar la compra
+                fetch('/procesar-compra', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: shippingData.email,
+                        nombre_completo: shippingData.fullName,
+                        productos: productos
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Compra procesada:', data);
+                    // Redirigir al usuario a la página de agradecimiento
+                    window.location.href = '/thankyou.html';
+                })
+                .catch(error => {
+                    console.error('Error al procesar la compra:', error);
+                    alert('Hubo un problema al procesar tu compra. Intenta nuevamente.');
+                });
             });
         },
         onError: function (err) {
@@ -95,6 +140,7 @@ function initializePayPalButton() {
         }
     }).render('#paypal-button-container'); // Renderizar dentro del contenedor
 }
+
 
 // Función para inicializar el checkout
 function initCheckout() {

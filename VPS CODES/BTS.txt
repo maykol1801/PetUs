@@ -12,6 +12,8 @@ ABRIR BASE DE DATOS EN LA vps
 
 sudo mysql -u root -p
 
+psw root
+
 
 REINICIAR EL NODE
 
@@ -19,3 +21,16 @@ pm2 restart petus-backend
 
 
 
+
+//INSTALADAS//
+
+UFW (Uncomplicated Firewall) 
+MySQL BD
+Bcrypt (encriptar contraseñas)
+Nodemailer (Biblioteca para enviar correos electrónicos desde una aplicación Node.js)
+
+
+usuario para pruebas
+
+pruebas@petus.com
+Petus123!

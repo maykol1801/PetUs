@@ -12,6 +12,14 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
         return;
     }
 
+    // Validación de formato de email
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        errorMessage.textContent = "Por favor, ingresa un correo electrónico válido.";
+        errorMessage.style.display = "block";
+        return;
+    }
+
     try {
         const response = await fetch("http://167.114.114.208:3000/login", {
             method: "POST",
@@ -24,10 +32,14 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
         const data = await response.json();
 
         if (response.ok) {
+            // Si el inicio de sesión es exitoso, guardar el token en localStorage
+            localStorage.setItem("authToken", data.token);  // Aquí guardas el token
+
             alert("Inicio de sesión exitoso");
-            // Redirigir al usuario
-            window.location.href = "/index.html";
+            // Redirigir al perfil u otra página protegida
+            window.location.href = "/pages/perfil/perfil.html"; 
         } else {
+            // Si el servidor responde con un error
             errorMessage.textContent = data.error || "Error desconocido. Intenta más tarde.";
             errorMessage.style.display = "block";
         }
