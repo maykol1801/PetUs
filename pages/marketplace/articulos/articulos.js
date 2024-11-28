@@ -12,7 +12,7 @@ if (carritoIcono) {
     const burbuja = document.createElement('span');
     burbuja.classList.add('cart-bubble');
     carritoIcono.appendChild(burbuja);
-    actualizarBurbuja();
+    actualizarBurbuja();  // Actualiza la burbuja al cargar la página
 }
 
 // Función para actualizar la burbuja del carrito
@@ -64,6 +64,38 @@ botonesAgregar.forEach(boton => {
         alert(`${cantidad} x "${titulo}" añadido(s) al carrito.`);
     });
 });
+
+
+// Este código se ejecutará cuando se cargue el DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // Función que actualiza la burbuja de carrito
+    function updateCartBubble() {
+        const cartItems = getCartItems(); // Asumiendo que tienes una función que obtiene los artículos del carrito
+        
+        if (cartItems.length > 0) {
+            document.querySelector('.cart-bubble').classList.add('show');
+        } else {
+            document.querySelector('.cart-bubble').classList.remove('show');
+        }
+    }
+    
+    // Función ficticia para obtener los artículos del carrito (reemplázala con tu propia lógica)
+    function getCartItems() {
+        // Aquí deberías tener la lógica para obtener los artículos del carrito
+        // Puede ser algo como: return cart; si tienes un objeto cart que mantiene el estado
+        return []; // Solo es un ejemplo, retorna un array con los productos del carrito
+    }
+    
+    // Llamamos a la función para actualizar la burbuja al cargar la página
+    updateCartBubble();
+
+    // Aquí agregarías cualquier otro evento que modifique el carrito, por ejemplo:
+    document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+        // Después de agregar un artículo al carrito, actualiza la burbuja
+        updateCartBubble();
+    });
+});
+
 
 // Redirige al checkout al hacer clic en el ícono del carrito
 if (carritoIcono) {

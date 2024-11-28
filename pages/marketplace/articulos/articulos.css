@@ -486,17 +486,21 @@ footer.dark-footer {
 /* Estilo para la burbuja */
 .cart-bubble {
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -5px;
+    right: -5px;
     background-color: red;
     color: white;
     border-radius: 50%;
-    padding: 5px 10px;
-    font-size: 14px;
-    font-weight: bold;
-    display: none; /* Escondido por defecto */
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    display: none;
 }
 
+.cart-bubble.show {
+    display: block; /* Cambiar de none a block para que se muestre */
+}
 
 
 /* Ajustar el contenedor de la tarjeta para evitar superposiciones */

@@ -1,0 +1,620 @@
+/* Reset completo para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Eliminación de márgenes en las capas raíz */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Forzamos que el header comience en el borde superior */
+header.hero {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: #fdf5e6;
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #fdf5e6;
+    color: #333;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdf5e6;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+/* Estilos para el logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d4a373;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #d4a373;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+    color: #ba8a5e;
+}
+
+.logo-img {
+    height: 4rem;
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li:not(:last-child)::after {
+    content: '|';
+    margin-left: 15px;
+    color: #d4a373;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.nav-links li a:hover {
+    color: #d4a373;
+}
+
+/* Estilo para el carrito de compras */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-icon {
+    height: 2rem;
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cart-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Animación al pasar el mouse */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    background-color: #d4a373;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.navbar .cta-button {
+    background-color: #d4a373;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .cta-button:hover {
+    background-color: #ba8a5e;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    background-color: #fdf5e6;
+}
+
+/* Fondo de respaldo para garantizar que no haya espacios vacíos */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fdf5e6;
+    z-index: 0;
+}
+
+
+/* Contact Section */
+.contact-section {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+    background-image: url('/imagenes/bgcontact.JPG'); /* Fondo personalizado */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    margin-top: 50px;
+}
+
+.contact-section h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+.contact-section p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8); /* Fondo translúcido para el formulario */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #1e90ff;
+    outline: none;
+}
+
+.contact-form button {
+    background-color: #ff8b1e; /* Color del botón */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #e77c1e;
+}
+
+
+
+/* Footer pastel */
+.dark-footer {
+    background-color: #fdebd0;
+    color: #333;
+    padding: 20px 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    margin-top: auto;
+    text-align: center;
+}
+
+footer.dark-footer .footer-center p {
+    margin: 0;
+    color: #d4a373;
+}
+
+/* Izquierda: Derechos reservados y advertencia */
+.footer-left {
+    flex: 1;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.footer-left p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: #555;
+}
+
+.footer-warning {
+    font-size: 0.8rem;
+    color: #a94442;
+}
+
+/* Centro: Logo y texto */
+.footer-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-center img {
+    height: 100px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.footer-center p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+    color: #d4a373;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Derecha: Contáctanos y redes sociales */
+.footer-right {
+    flex: 1;
+    text-align: right;
+    margin-right: 40px;
+}
+
+.footer-right h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.footer-social a img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social a:hover img {
+    transform: scale(1.2);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .dark-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left, .footer-right {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+/* Asegura que el contenido de la página no interfiera con el footer */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer.dark-footer {
+    margin-top: auto;
+}
+
+
+/* Mantenemos todo el código CSS anterior y agregamos/modificamos los media queries */
+
+/* Media Queries para Responsive Design */
+
+/* Pantallas grandes y medianas */
+@media screen and (max-width: 1200px) {
+    .catalog-section {
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .catalog-link {
+        width: 250px;
+        height: 250px;
+    }
+
+    .catalog-text h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 1024px) {
+    /* Ajustes del navbar */
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .logo-img {
+        height: 3rem;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    /* Ajustes del catálogo */
+    .catalog-banner {
+        height: 350px;
+    }
+
+    .catalog-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .catalog-text p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Tablets pequeñas y dispositivos móviles grandes */
+@media screen and (max-width: 768px) {
+    /* Navbar responsive */
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 15px;
+        margin-top: 15px;
+        display: none; /* Oculto por defecto en móvil */
+    }
+
+    .nav-links.active {
+        display: flex; /* Se muestra cuando está activo */
+    }
+
+    .nav-links li:not(:last-child)::after {
+        display: none;
+    }
+
+    .navbar-right {
+        margin-top: 15px;
+    }
+
+    /* Ajustes del catálogo */
+    .catalog-section {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+
+    .catalog-link {
+        width: 280px;
+        height: 280px;
+    }
+
+    .catalog-banner {
+        height: 300px;
+    }
+
+    .catalog-text h1 {
+        font-size: 2rem;
+    }
+
+    .catalog-text p {
+        font-size: 1.1rem;
+    }
+
+    /* Footer ajustes */
+    .dark-footer {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+
+    .footer-left, .footer-right {
+        margin: 10px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-center img {
+        height: 80px;
+    }
+}
+
+/* Dispositivos móviles */
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 2.5rem;
+    }
+
+    /* Ajustes del banner del catálogo */
+    .catalog-banner {
+        height: 250px;
+    }
+
+    .catalog-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .catalog-text p {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    /* Ajustes de las tarjetas del catálogo */
+    .catalog-link {
+        width: 250px;
+        height: 250px;
+    }
+
+    .catalog-link .info-text {
+        font-size: 0.9rem;
+    }
+
+    .catalog-link:hover .info-text {
+        font-size: 1rem;
+    }
+
+    /* Footer ajustes adicionales */
+    .footer-center p {
+        font-size: 1.4rem;
+    }
+
+    .footer-left p, .footer-right p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media screen and (max-width: 320px) {
+    .catalog-link {
+        width: 220px;
+        height: 220px;
+    }
+
+    .catalog-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .catalog-banner {
+        height: 200px;
+    }
+
+    .footer-center p {
+        font-size: 1.2rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+}
+
+/* Ajustes para dispositivos con hover */
+@media (hover: hover) {
+    .nav-links li a:hover::after {
+        width: 100%;
+    }
+
+    .catalog-link:hover {
+        transform: translateY(-10px);
+    }
+
+    .footer-social a:hover img {
+        transform: scale(1.2);
+    }
+}
+
+/* Ajustes para dispositivos sin hover */
+@media (hover: none) {
+    .nav-links li a::after {
+        display: none;
+    }
+
+    .catalog-link:active {
+        transform: translateY(-5px);
+    }
+
+    .footer-social a:active img {
+        transform: scale(1.1);
+    }
+
+    .catalog-link .info-text {
+        opacity: 1;
+        font-size: 1rem;
+    }
+}
