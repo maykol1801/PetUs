@@ -86,20 +86,25 @@ let allPets = [];
 // Cargar todas las tarjetas de mascotas
 function loadPets() {
     const petCards = document.querySelectorAll('.product-card');
-    return Array.from(petCards).map(card => ({
-        element: card,
-        type: card.querySelector('.product-title').textContent.toLowerCase().includes('gato') ? 'cat' : 'dog',
-        price: parseFloat(card.querySelector('.product-price').textContent.replace('$', '').replace(',', '')),
-        inStock: card.getAttribute('data-stock') === 'true',
-        name: card.querySelector('.product-title').textContent
-    }));
+    return Array.from(petCards).map(card => {
+        const title = card.querySelector('.product-title').textContent.toLowerCase();
+        return {
+            element: card,
+            type: title.includes('comida') ? 'comida' : (title.includes('juguete') ? 'juguete' : 'all'),
+            price: parseFloat(card.querySelector('.product-price').textContent.replace('$', '').replace(',', '')),
+            inStock: card.getAttribute('data-stock') === 'true',
+            name: title
+        };
+    });
 }
+
+
 
 // Renderiza las tarjetas de mascotas basadas en un conjunto de datos
 function renderPets(filteredPets) {
     marketplaceGrid.innerHTML = ''; // Limpia el contenedor
     if (filteredPets.length === 0) {
-        marketplaceGrid.innerHTML = '<p>No hay mascotas que coincidan con los filtros seleccionados.</p>';
+        marketplaceGrid.innerHTML = '<p>No hay articulos que coincidan con los filtros seleccionados.</p>';
         return;
     }
     filteredPets.forEach(pet => {
@@ -160,6 +165,8 @@ function applyFiltersAndSort() {
     // Renderizar las tarjetas filtradas y ordenadas
     renderPets(sortedPets);
 }
+
+
 
 // Configurar listeners para filtros y opciones de ordenamiento
 petTypeFilters.forEach(filter => {

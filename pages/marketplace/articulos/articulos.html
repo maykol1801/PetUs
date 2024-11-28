@@ -30,7 +30,9 @@
                     <div class="navbar-right">
                         <div class="cart-container" style="position: relative;">
                             <img src="/imagenes/carrito.png" alt="Carrito de compras" class="cart-icon">
-                            <!-- Aquí se insertará la burbuja con JS -->
+                            <div id="cart-bubble" class="cart-bubble" style="display: none;">
+                                <span id="cart-count">0</span>
+                            </div>
                         </div>
                     </div>
                     
@@ -39,7 +41,7 @@
 
         <div class="warning-banner">
             <p>
-                <strong>Nota importante:</strong> El stock de mascotas varía constantemente. No contamos con un centro de perros permanente; los animales se ponen a la venta conforme nacen y alcanzan la edad suficiente.
+                <strong>Nota importante:</strong> El stock de mascotas varía constantemente.
             </p>
         </div>        
 
@@ -47,11 +49,11 @@
 <div class="search-banner">
     <div class="search-banner-content">
         <!-- Imagen a la izquierda -->
-        <img src="/imagenes/perrofeliz.png" alt="Imagen representativa" class="search-image">
+        <img src="/imagenes/gatofeliz.png" alt="Imagen representativa" class="search-image">
 
         <!-- Texto en el centro -->
         <div class="search-text">
-            <h1>Encuentra tu mascota ideal</h1>
+            <h1>¡Lo mejor para tu peludito!</h1>
         </div>
 
         </div>
@@ -66,13 +68,13 @@
         <div class="filter-group">
             <h3>Tipo de mascota</h3>
             <label>
-                <input type="radio" name="article-type" value="all" checked> Todos
+                <input type="radio" name="pet-type" value="all" checked> Todos
             </label>
             <label>
-                <input type="radio" name="article-type" value="comida"> Comida
+                <input type="radio" name="pet-type" value="comida"> Comida
             </label>
             <label>
-                <input type="radio" name="article-type" value="juguetes"> Juguetes
+                <input type="radio" name="pet-type" value="juguete"> Juguete
             </label>
         </div>
         <div class="filter-group">
@@ -103,7 +105,7 @@
                 <!-- Frente -->
                 <div class="card-front">
                     <img src="/imagenes/bolsapedigree.webp" alt="comida1" class="product-image">
-                    <h2 class="product-title">Pedigree cahorro 2kg</h2>
+                    <h2 class="product-title">Comida Pedigree cahorro 2kg</h2>
                     <p class="product-price">$10.50</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
@@ -124,7 +126,7 @@
                 <div class="card-front">
                     <img src="/imagenes/juguetecorazon.png" alt="juguete1" class="product-image">
                     <h2 class="product-title">Juguete Corazon rubber</h2>
-                    <p class="product-price">$3.50.00</p>
+                    <p class="product-price">$3.50</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
                     </div>
@@ -142,7 +144,7 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="/imagenes/comidarufo.webp" alt="comida2" class="product-image">
-                    <h2 class="product-title">Rufo bolsa 8.8lb</h2>
+                    <h2 class="product-title">Comida Rufo bolsa 8.8lb</h2>
                     <p class="product-price">$12.00</p>
                     <div class="product-stock">
                         <span class="checkmark red">✘</span> Sin stock
@@ -159,7 +161,7 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="/imagenes/sobrecarnedogchow.webp" alt="comida3" class="product-image">
-                    <h2 class="product-title">Sobre dog chow 100g</h2>
+                    <h2 class="product-title">Comida dog chow 100g</h2>
                     <p class="product-price">$2.50</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
@@ -195,7 +197,7 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="/imagenes/dognuts.png" alt="comida4" class="product-image">
-                    <h2 class="product-title">DOGnuts!</h2>
+                    <h2 class="product-title">Comida DOGnuts!</h2>
                     <p class="product-price">$4.00</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
@@ -214,7 +216,7 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="/imagenes/pelotatenis.jpg" alt="juguete3" class="product-image">
-                    <h2 class="product-title">Pelota de tenis</h2>
+                    <h2 class="product-title">Juguete Pelota de tenis</h2>
                     <p class="product-price">$5.00</p>
                     <div class="product-stock">
                         <span class="checkmark red">✘</span> Sin stock
@@ -231,7 +233,7 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="/imagenes/puptella.png" alt="comida5" class="product-image">
-                    <h2 class="product-title">Puptella</h2>
+                    <h2 class="product-title">Comida Puptella</h2>
                     <p class="product-price">$8.00</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
@@ -249,9 +251,9 @@
             <div class="card-inner">
                 <!-- Frente -->
                 <div class="card-front">
-                    <img src="/imagenes/huskysiberiano.jpg" alt="comida6" class="product-image">
-                    <h2 class="product-title">Husky Siberiano</h2>
-                    <p class="product-price">$1,200.00</p>
+                    <img src="/imagenes/comidadogstar.webp" alt="comida6" class="product-image">
+                    <h2 class="product-title">Comida DogStar Adulto 11.34Kg</h2>
+                    <p class="product-price">$15.00</p>
                     <div class="product-stock">
                         <span class="checkmark red">✘</span> Sin stock
                     </div>
@@ -266,9 +268,9 @@
         <div class="product-card" data-stock="true">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="/imagenes/gatobengali.webp" alt="juguete4" class="product-image">
-                    <h2 class="product-title">Gato Bengalí</h2>
-                    <p class="product-price">$1,100.00</p>
+                    <img src="/imagenes/juguetelazo.png" alt="juguete4" class="product-image">
+                    <h2 class="product-title">Juguete lazo corazon</h2>
+                    <p class="product-price">$6.00</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
                     </div>
@@ -284,9 +286,9 @@
         <div class="product-card" data-stock="true">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="/imagenes/dalmata.avif" alt="comida7" class="product-image">
-                    <h2 class="product-title">Dálmata</h2>
-                    <p class="product-price">$850.00</p>
+                    <img src="/imagenes/comidapurinaalpo.webp" alt="comida7" class="product-image">
+                    <h2 class="product-title">Comida Purina Alpo Adulto 20KG</h2>
+                    <p class="product-price">$25.00</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
                     </div>
@@ -302,9 +304,9 @@
         <div class="product-card" data-stock="false">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="/imagenes/gatoazulruso.jpg" alt="juguete5" class="product-image">
-                    <h2 class="product-title">Gato Azul Ruso</h2>
-                    <p class="product-price">$750.00</p>
+                    <img src="/imagenes/tunelparagato.jpg" alt="juguete5" class="product-image">
+                    <h2 class="product-title">Juguete Tunel para Gato</h2>
+                    <p class="product-price">$30.00</p>
                     <div class="product-stock">
                         <span class="checkmark red">✘</span> Sin stock
                     </div>
@@ -318,9 +320,9 @@
         <div class="product-card" data-stock="true">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="/imagenes/corgi.jpg" alt="comida8" class="product-image">
-                    <h2 class="product-title">Corgi</h2>
-                    <p class="product-price">$950.00</p>
+                    <img src="/imagenes/comidaknino.png" alt="comida8" class="product-image">
+                    <h2 class="product-title">Comida K-nino Adulto 50LB</h2>
+                    <p class="product-price">$7.00</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
                     </div>
@@ -336,9 +338,9 @@
         <div class="product-card" data-stock="true">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="/imagenes/gatoesfinge.jpg" alt="juguete6" class="product-image">
-                    <h2 class="product-title">Gato Esfinge</h2>
-                    <p class="product-price">$1,500.00</p>
+                    <img src="/imagenes/juguetegomaconcuerda.jpg" alt="juguete6" class="product-image">
+                    <h2 class="product-title">Juguete Goma con Cuerda</h2>
+                    <p class="product-price">$5.00</p>
                     <div class="product-stock">
                         <span class="checkmark green">✔</span> En stock
                     </div>
@@ -354,9 +356,9 @@
         <div class="product-card" data-stock="false">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="/imagenes/shitzu.webp" alt="comida9" class="product-image">
-                    <h2 class="product-title">Shih Tzu</h2>
-                    <p class="product-price">$700.00</p>
+                    <img src="/imagenes/comidabells.webp" alt="comida9" class="product-image">
+                    <h2 class="product-title">Comida Bells 25KG</h2>
+                    <p class="product-price">$22.00</p>
                     <div class="product-stock">
                         <span class="checkmark red">✘</span> Sin stock
                     </div>
