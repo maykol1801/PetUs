@@ -8,6 +8,7 @@ const cors = require('cors'); // Importa cors
 // Inicializa Express
 const app = express(); // Asegúrate de que esta línea esté antes de cualquier uso de `app`
 const port = 3000; // Define el puerto donde correrá el servidor
+app.use(bodyParser.urlencoded({ extended: true })); // Para datos de formularios
 
 // Middleware para manejar JSON y CORS
 app.use(bodyParser.json()); // Parsear cuerpo de las solicitudes como JSON
@@ -246,6 +247,77 @@ app.post('/procesar-compra', (req, res) => {
 });
 
 
+// Ruta para manejar el formulario de contacto
+app.post('/send-contact-email', async (req, res) => {
+    console.log("Recibiendo solicitud para enviar correo de contacto...");
+    
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+        console.error("Campos faltantes en el formulario de contacto:", req.body);
+        return res.status(400).json({ error: 'Todos los campos son obligatorios.' });
+    }
+
+    console.log("Datos del formulario de contacto:", req.body);
+
+    // Configuramos el correo de confirmación para el usuario
+    const mailOptions = {
+        from: 'noreply@petus.lat',
+        to: email,
+        subject: 'Estamos trabajando en resolver tu solicitud',
+        html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <div style="background-color: #ff7f50; color: white; padding: 20px; text-align: center;">
+                    <h1 style="margin: 0; font-size: 24px;">¡Gracias por contactarnos!</h1>
+                </div>
+                <div style="padding: 20px;">
+                    <p style="font-size: 16px; color: #555;">
+                        Hola, <strong>${name}</strong>:
+                    </p>
+                    <p style="font-size: 16px; color: #555; line-height: 1.6;">
+                        Gracias por ponerte en contacto con nosotros. Hemos recibido tu mensaje y nuestro equipo está trabajando para resolver tu solicitud. Te responderemos a la brevedad posible.
+                    </p>
+                    <p style="font-size: 16px; color: #555;">
+                        Tu mensaje: <br>
+                        <i>"${message}"</i>
+                    </p>
+                    <p style="font-size: 14px; color: #999; line-height: 1.6;">
+                        Si tienes más preguntas, no dudes en escribirnos nuevamente.
+                    </p>
+                </div>
+                <div style="background-color: #f9f9f9; padding: 10px 20px; text-align: center; font-size: 12px; color: #999;">
+                    <p style="margin: 0;">© 2024 PetUs. Todos los derechos reservados.</p>
+                    <p style="margin: 5px 0;">
+                        <a href="http://petus.lat" style="color: #999; text-decoration: none;">Visítanos en petus.lat</a>
+                    </p>
+                </div>
+            </div>
+        `,
+    };
+
+    try {
+        // Esperamos a que el correo sea enviado
+        console.log("Enviando correo...");
+        await new Promise((resolve, reject) => {
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error('Error al enviar el correo:', error);
+                    reject(error);  // Si hay un error, rechazamos la promesa
+                } else {
+                    console.log('Correo enviado:', info.response);
+                    resolve(info);  // Si el correo se envía correctamente, resolvemos la promesa
+                }
+            });
+        });
+
+        // Si el correo se envió correctamente, redirigimos al usuario a la página de ticket
+        console.log("Correo enviado correctamente, redirigiendo...");
+        res.status(200).send("Mensaje enviado correctamente.");
+    } catch (error) {
+        console.error('Error al enviar el correo de contacto:', error);
+        res.status(500).json({ error: 'Error al enviar el correo de confirmación.' });
+    }
+});
 
 
 

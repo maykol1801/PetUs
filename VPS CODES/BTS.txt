@@ -12,7 +12,7 @@ ABRIR BASE DE DATOS EN LA vps
 
 sudo mysql -u root -p
 
-psw root
+psw TuP@ssw0rd2024!
 
 
 REINICIAR EL NODE
