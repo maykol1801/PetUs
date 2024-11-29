@@ -100,7 +100,7 @@ app.post('/register', async (req, res) => {
                                     Gracias por registrarte en <strong>PetUs</strong>. Estamos emocionados de tenerte como parte de nuestra comunidad. ¡Explora nuestras funcionalidades, descubre productos increíbles y conecta con otros amantes de las mascotas!
                                 </p>
                                 <div style="text-align: center; margin: 30px 0;">
-                                    <a href="http://petus.lat/login" style="background-color: #ff7f50; color: white; text-decoration: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; display: inline-block;">
+                                    <a href="https://www.petus.lat/pages/login/login.html" style="background-color: #ff7f50; color: white; text-decoration: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; display: inline-block;">
                                         Inicia Sesión Ahora
                                     </a>
                                 </div>
@@ -235,6 +235,69 @@ app.get('/perfil', (req, res) => {
         });
     });
 });
+
+
+
+
+const multer = require('multer');
+const path = require('path');
+
+// Configuración de almacenamiento de la foto de perfil
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');  // Directorio donde se guardarán las fotos
+    },
+    filename: (req, file, cb) => {
+        // Crear un nombre único para la foto
+        cb(null, Date.now() + path.extname(file.originalname));  // Fecha + extensión del archivo
+    }
+});
+
+const upload = multer({ storage: storage });
+
+
+
+app.put('/perfil/actualizar-foto', upload.single('foto_perfil'), (req, res) => {
+    const token = req.headers['authorization']?.split(' ')[1];  // Obtener token de autorización
+
+    if (!token) {
+        return res.status(401).json({ error: 'No autorizado, el token es requerido.' });
+    }
+
+    // Verificar el token
+    jwt.verify(token, 'Petus123!', (err, decoded) => {
+        if (err) {
+            console.error('Error al verificar el token:', err);
+            return res.status(401).json({ error: 'Token inválido o expirado' });
+        }
+
+        const userId = decoded.id; // Usar el id extraído del token
+
+        if (!req.file) {
+            return res.status(400).json({ error: 'No se ha subido ninguna foto.' });
+        }
+
+        // Obtener el nombre del archivo subido
+        const fotoPerfil = req.file.filename;
+
+        // Actualizar la foto de perfil en la base de datos
+        const query = 'UPDATE usuarios SET foto_perfil = ? WHERE id = ?';
+        db.query(query, [fotoPerfil, userId], (err, results) => {
+            if (err) {
+                console.error('Error al actualizar la foto de perfil:', err);
+                return res.status(500).json({ error: 'Error al actualizar la foto de perfil' });
+            }
+
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ error: 'Usuario no encontrado' });
+            }
+
+            // Responder con el nombre de la foto subida
+            res.json({ message: 'Foto de perfil actualizada con éxito.', foto_perfil: fotoPerfil });
+        });
+    });
+});
+
 
 
 

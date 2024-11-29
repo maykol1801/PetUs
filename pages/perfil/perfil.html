@@ -43,7 +43,6 @@
                 <img src="/imagenes/ppdefault.jpg" alt="Foto de perfil" id="profile-image">
                 <div>
                     <h2 id="profile-name">PetUs Pruebas</h2>
-                    <p id="profile-email">pruebas@petus.com</p>
                 </div>
             </div>
 
@@ -53,6 +52,15 @@
                 <p><strong>Fecha de Nacimiento:</strong> <span id="profile-dob">01-01-1990</span></p>
                 <p><strong>Fecha de Registro:</strong> <span id="profile-registration-date">20-11-2024</span></p>
             </div>
+                <!-- Formulario para subir la foto de perfil -->
+                <div class="photo-upload">
+                    <label for="foto_perfil" class="upload-label">
+                        <i class="upload-icon fa fa-camera"></i> Subir Foto
+                    </label>
+                    <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" />
+                    <button id="guardarFotoBtn">Guardar Foto</button>
+                </div>
+             
         </div>
     </div>
         
@@ -95,6 +103,4 @@
     <script src="perfil.js"></script>
     <script type="module" src="/global.js"></script>
 </body>
-
-
 </html>

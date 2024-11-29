@@ -1,5 +1,6 @@
 window.onload = function () {
-    const authToken = localStorage.getItem("authToken"); // Recuperamos el token de localStorage
+    // Verificar si el usuario está logueado
+    const authToken = localStorage.getItem("authToken");
 
     if (!authToken) {
         // Si no hay token (usuario no ha iniciado sesión), redirigir al login
@@ -14,8 +15,6 @@ window.onload = function () {
             },
         })
         .then(response => {
-            // Revisar el tipo de respuesta
-            console.log("Respuesta recibida:", response);
             if (response.status === 401) {
                 // Si no hay sesión válida, redirigir al login
                 window.location.href = '/pages/login/login.html';
@@ -26,7 +25,6 @@ window.onload = function () {
         })
         .then(data => {
             if (typeof data === 'string') {
-                // Si la respuesta no es JSON, mostrar el error y parar la ejecución
                 console.error("Error en la respuesta del servidor:", data);
                 alert("Hubo un problema al cargar el perfil. Por favor, intente más tarde.");
                 return;
@@ -44,12 +42,72 @@ window.onload = function () {
                 if (data.foto_perfil) {
                     document.getElementById('profile-image').src = `/uploads/${data.foto_perfil}`;
                 } else {
-                    document.getElementById('profile-image').src = '/imagenes/imagen_por_defecto.jpg'; // Foto predeterminada
+                    document.getElementById('profile-image').src = '/imagenes/ppdefault.jpg'; // Foto predeterminada
                 }
             }
         })
         .catch(error => {
             console.error('Error al cargar el perfil:', error);
         });
+    }
+
+    // Función para mostrar la previsualización de la imagen
+    function mostrarPrevia(event) {
+        const file = event.target.files[0]; // Obtener el primer archivo
+        if (file) {
+            const reader = new FileReader(); // Crear un objeto FileReader
+            reader.onload = function(e) {
+                // Establecer la imagen en el elemento de la foto de perfil
+                document.getElementById('profile-image').src = e.target.result;
+            }
+            reader.readAsDataURL(file); // Leer el archivo como una URL de datos
+        }
+    }
+
+    // Asociar el evento onchange al input de archivo para mostrar la previsualización
+    const fotoPerfilInput = document.getElementById('foto_perfil');
+    if (fotoPerfilInput) {
+        fotoPerfilInput.addEventListener('change', mostrarPrevia);
+    }
+
+    // Función para subir la foto
+    function subirFoto() {
+        const fileInput = document.getElementById('foto_perfil');
+        const formData = new FormData();
+
+        if (fileInput.files.length > 0) {
+            formData.append('foto_perfil', fileInput.files[0]);
+
+            const authToken = localStorage.getItem("authToken");
+
+            fetch('/perfil/actualizar-foto', {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`
+                },
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'Foto de perfil actualizada con éxito.') {
+                    // Actualizar la imagen mostrada
+                    document.getElementById('profile-image').src = `/uploads/${data.foto_perfil}`;
+                    alert('Foto de perfil actualizada correctamente');
+                } else {
+                    alert('Error al actualizar la foto');
+                }
+            })
+            .catch(error => {
+                console.error('Error al actualizar la foto:', error);
+            });
+        } else {
+            alert('Por favor, selecciona una foto');
+        }
+    }
+
+    // Asociar el evento de clic al botón de "Guardar Foto" (usando el ID del botón)
+    const guardarFotoBtn = document.getElementById('guardarFotoBtn');
+    if (guardarFotoBtn) {
+        guardarFotoBtn.addEventListener('click', subirFoto);
     }
 };
