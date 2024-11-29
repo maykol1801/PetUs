@@ -28,6 +28,7 @@ UFW (Uncomplicated Firewall)
 MySQL BD
 Bcrypt (encriptar contraseñas)
 Nodemailer (Biblioteca para enviar correos electrónicos desde una aplicación Node.js)
+jsonwebtoken (para los tokens de inicio de sesion y que se verifiquen en otras partes de la pagina)
 
 
 usuario para pruebas

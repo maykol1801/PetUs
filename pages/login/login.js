@@ -21,6 +21,7 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
     }
 
     try {
+        // Realizar la solicitud de login
         const response = await fetch("https://petus.lat/login", {
             method: "POST",
             headers: {
@@ -33,11 +34,12 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
 
         if (response.ok) {
             // Si el inicio de sesión es exitoso, guardar el token en localStorage
-            localStorage.setItem("authToken", data.token);  // Aquí guardas el token
+            localStorage.setItem("authToken", data.token);  // Guarda el token en localStorage
 
             alert("Inicio de sesión exitoso");
+
             // Redirigir al perfil u otra página protegida
-            window.location.href = "/pages/perfil/perfil.html"; 
+            window.location.href = "/pages/perfil/perfil.html"; // Redirige a la página del perfil
         } else {
             // Si el servidor responde con un error
             errorMessage.textContent = data.error || "Error desconocido. Intenta más tarde.";

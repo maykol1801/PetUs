@@ -137,6 +137,10 @@ app.post('/register', async (req, res) => {
     }
 });
 
+
+
+const jwt = require('jsonwebtoken'); // Importa jsonwebtoken para crear tokens
+
 app.post('/login', (req, res) => {
     const { email, contraseña } = req.body;
 
@@ -169,9 +173,69 @@ app.post('/login', (req, res) => {
         }
 
         console.log("Inicio de sesión exitoso para el usuario:", email);
-        res.status(200).json({ message: 'Inicio de sesión exitoso', user });
+
+        // Generar un token JWT. Puedes agregar más información en el payload si es necesario (por ejemplo, el nombre del usuario).
+        const token = jwt.sign(
+            { id: user.id, email: user.email }, // Payload del token (datos que el token llevará)
+            'Petus123!', // Esta es la clave secreta que usas para firmar el token
+            { expiresIn: '1h' } // El token expirará en 1 hora
+        );
+
+        // Enviar el token al cliente
+        res.status(200).json({ 
+            message: 'Inicio de sesión exitoso', 
+            token // Envía el token al cliente
+        });
     });
 });
+
+
+// Ruta para obtener los datos del perfil (GET)
+app.get('/perfil', (req, res) => {
+    // Obtener el token del encabezado 'Authorization'
+    const token = req.headers['authorization']?.split(' ')[1]; // Token en formato 'Bearer <token>'
+
+    if (!token) {
+        return res.status(401).json({ error: 'No autorizado, el token es requerido.' });
+    }
+
+    // Verificar el token
+    jwt.verify(token, 'Petus123!', (err, decoded) => {
+        if (err) {
+            console.error('Error al verificar el token:', err);
+            return res.status(401).json({ error: 'Token inválido o expirado' });
+        }
+
+        const userId = decoded.id; // Usar el id extraído del token
+
+        // Consultar los datos del usuario en la base de datos
+        const query = 'SELECT * FROM usuarios WHERE id = ?';
+        db.query(query, [userId], (err, results) => {
+            if (err) {
+                console.error('Error al obtener los datos del usuario:', err);
+                return res.status(500).json({ error: 'Error al obtener los datos del perfil' });
+            }
+
+            if (results.length === 0) {
+                return res.status(404).json({ error: 'Usuario no encontrado' });
+            }
+
+            const user = results[0]; // El primer resultado es el usuario encontrado
+
+            // Enviar los datos del perfil
+            res.json({
+                nombre_completo: user.nombre,
+                nombre_usuario: user.nombre_usuario,
+                email: user.email,
+                telefono: user.telefono,
+                fecha_nacimiento: user.fecha_nacimiento,
+                fecha_registro: user.fecha_registro,
+                foto_perfil: user.foto_perfil
+            });
+        });
+    });
+});
+
 
 
 
