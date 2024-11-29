@@ -18,7 +18,9 @@ document.getElementById("register-form").addEventListener("submit", async (event
     }
 
     try {
-        const response = await fetch("http://167.114.114.208:3000/register", {
+        // Usamos HTTPS en la URL para evitar el problema de contenido mixto
+        // Usamos la URL absoluta con el dominio completo para evitar problemas si se ejecuta en diferentes entornos
+        const response = await fetch("https://petus.lat/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -37,14 +39,14 @@ document.getElementById("register-form").addEventListener("submit", async (event
 
         if (response.ok) {
             alert("Usuario registrado exitosamente. Ahora puedes iniciar sesión.");
-            window.location.href = "/pages/login/login.html";
+            window.location.href = "/pages/login/login.html"; // Redirige a la página de login
         } else {
             errorMessage.textContent = data.error;
-            errorMessage.style.display = "block";
+            errorMessage.style.display = "block"; // Muestra el mensaje de error si ocurre
         }
     } catch (error) {
         console.error("Error al conectar con el servidor:", error);
         errorMessage.textContent = "Hubo un problema. Inténtalo más tarde.";
-        errorMessage.style.display = "block";
+        errorMessage.style.display = "block"; // Muestra mensaje si falla la conexión
     }
 });

@@ -177,34 +177,44 @@ app.post('/login', (req, res) => {
 
 // Ruta para procesar la compra y enviar correo de confirmación
 app.post('/procesar-compra', (req, res) => {
-    const { email, nombre_completo, productos } = req.body;
+    // Asegúrate de que los campos están siendo desestructurados correctamente
+    const { email, nombre_completo, direccion, ciudad, pais, codigo_postal, telefono, productos, total } = req.body;
+
+    // Parsear 'productos' para asegurarte de que es un arreglo
+    const productosParsed = JSON.parse(productos);
 
     console.log('Datos de la compra:', req.body);
 
     // Validar los campos necesarios
-    if (!email || !productos || productos.length === 0) {
+    if (!email || !nombre_completo || !direccion || !ciudad || !pais || !codigo_postal || !telefono || !productosParsed || productosParsed.length === 0) {
         return res.status(400).json({ error: 'Faltan datos en la compra.' });
     }
 
     // Crear el resumen de la compra
-    let resumenOrden = `
+    let resumenOrden = ` 
         <h3>Resumen de la Orden</h3>
         <p>Gracias por tu compra, <strong>${nombre_completo}</strong>! Aquí está el resumen de tu orden:</p>
+        <p><strong>Dirección de Envío:</strong><br>
+           ${direccion}, ${ciudad}, ${codigo_postal}, ${pais}<br>
+           <strong>Teléfono:</strong> ${telefono}<br>
+        </p>
         <ul>
     `;
+
     let totalOrden = 0;
-    productos.forEach((producto) => {
+    productosParsed.forEach((producto) => {
         const totalProducto = producto.precio * producto.cantidad;
         resumenOrden += `
             <li>
-                <strong>Producto:</strong> ${producto.nombre} <br>
-                <strong>Cantidad:</strong> ${producto.cantidad} <br>
-                <strong>Precio:</strong> $${producto.precio} <br>
-                <strong>Total:</strong> $${totalProducto} <br>
-            </li>
-        `;
-        totalOrden += totalProducto;
+              <strong>Producto:</strong> ${producto.nombre} <br>
+              <strong>Cantidad:</strong> ${producto.cantidad} <br>
+              <strong>Precio:</strong> $${producto.precio} <br>
+              <strong>Total:</strong> $${totalProducto} <br>
+          </li>
+     `;
+      totalOrden += totalProducto;
     });
+
     resumenOrden += `</ul><p><strong>Total: $${totalOrden}</strong></p>`;
 
     // Configuración del correo
@@ -240,11 +250,12 @@ app.post('/procesar-compra', (req, res) => {
             return res.status(500).json({ error: 'Error al enviar el correo de confirmación.' });
         }
         console.log('Correo enviado:', info.response);
-        
-        // Redirigir al cliente a la página de agradecimiento
-        res.status(200).json({ message: 'Compra procesada y correo enviado.' });
+        res.redirect('/pages/checkout/thankyou.html');
     });
 });
+
+
+
 
 
 // Ruta para manejar el formulario de contacto
@@ -312,7 +323,7 @@ app.post('/send-contact-email', async (req, res) => {
 
         // Si el correo se envió correctamente, redirigimos al usuario a la página de ticket
         console.log("Correo enviado correctamente, redirigiendo...");
-        res.status(200).send("Mensaje enviado correctamente.");
+        res.redirect("/pages/contacto/ticketregistrado/ticket.html");
     } catch (error) {
         console.error('Error al enviar el correo de contacto:', error);
         res.status(500).json({ error: 'Error al enviar el correo de confirmación.' });

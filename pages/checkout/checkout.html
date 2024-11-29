@@ -48,48 +48,49 @@
                         <label for="address">Dirección:</label>
                         <input type="text" id="address" name="address" placeholder="Calle, número y colonia" required>
                     </div>
-
+                
                     <!-- Ciudad -->
                     <div class="form-group">
                         <label for="city">Ciudad:</label>
                         <input type="text" id="city" name="city" placeholder="Ciudad" required>
                     </div>
-
+                
                     <!-- País -->
                     <div class="form-group">
                         <label for="country">País:</label>
                         <select id="country" name="country" required>
                             <option value="">Selecciona un país</option>
-                            <option value="mx">El Salvador</option>
-                            <option value="us">Honduras</option>
-                            <option value="ca">Guatemala</option>
+                            <option value="sv">El Salvador</option>
+                            <option value="hn">Honduras</option>
+                            <option value="gm">Guatemala</option>
                         </select>
                     </div>
-
+                
                     <!-- Código Postal -->
                     <div class="form-group">
                         <label for="postal-code">Código Postal:</label>
                         <input type="text" id="postal-code" name="postal-code" placeholder="Código Postal" required>
                     </div>
-
+                
                     <!-- Nombre completo -->
                     <div class="form-group">
                         <label for="full-name">Nombre completo:</label>
                         <input type="text" id="full-name" name="full-name" placeholder="Tu nombre completo" required>
                     </div>
-
+                
                     <!-- Teléfono -->
                     <div class="form-group">
                         <label for="phone">Teléfono:</label>
                         <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
                     </div>
-
+                
                     <!-- Correo electrónico -->
                     <div class="form-group">
                         <label for="email">Correo electrónico:</label>
                         <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
                     </div>
                 </form>
+                
             </div>
 
             <!-- Columna derecha: Resumen de la compra -->
@@ -109,8 +110,21 @@
                     <div id="paypal-button-container"></div>
                 </div>
             </div>
-        </div>
     </div>
+</div>
+
+<form id="checkout-form" action="/procesar-compra" method="POST" style="display:none;">
+    <input type="text" id="hidden-address" name="address" />
+    <input type="text" id="hidden-city" name="city" />
+    <input type="text" id="hidden-country" name="country" />
+    <input type="text" id="hidden-postal-code" name="postal-code" />
+    <input type="text" id="hidden-full-name" name="full-name" />
+    <input type="text" id="hidden-phone" name="phone" />
+    <input type="email" id="hidden-email" name="email" />
+    <input type="number" id="hidden-total" name="total" />
+    <input type="text" id="hidden-cart-items" name="cart-items" />
+</form>
+
 
     <!-- Footer -->
     <footer class="dark-footer">

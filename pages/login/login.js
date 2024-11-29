@@ -21,7 +21,7 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
     }
 
     try {
-        const response = await fetch("http://167.114.114.208:3000/login", {
+        const response = await fetch("https://petus.lat/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

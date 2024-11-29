@@ -583,3 +583,114 @@ footer.dark-footer {
         font-size: 1rem;
     }
 }
+/* Additional Responsive Enhancements */
+
+/* Use viewport units and max-width for better scaling */
+body {
+    font-size: clamp(14px, 2vw + 1rem, 18px);
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Flexible padding and margins */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Enhanced touch targets for mobile */
+@media (max-width: 768px) {
+    .nav-links li a,
+    .navbar .cta-button,
+    .footer-social a {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+}
+
+/* Fluid typography */
+:root {
+    --fluid-min-width: 320;
+    --fluid-max-width: 1200;
+    --fluid-min-size: 16;
+    --fluid-max-size: 18;
+    --fluid-min-ratio: 1.2;
+    --fluid-max-ratio: 1.25;
+}
+
+h1 {
+    font-size: clamp(
+        calc(var(--fluid-min-size) * 1px),
+        calc(var(--fluid-min-size) * 1px + (var(--fluid-max-size) - var(--fluid-min-size)) * ((100vw - var(--fluid-min-width) * 1px) / (var(--fluid-max-width) - var(--fluid-min-width)))),
+        calc(var(--fluid-max-size) * 1px)
+    );
+}
+
+/* Improve accessibility for touch devices */
+@media (pointer: coarse) {
+    .nav-links li a,
+    .navbar .cta-button {
+        padding: 12px 18px;
+        margin: 5px 0;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        font-size: 12pt;
+        color: #000;
+        background: #fff;
+    }
+    
+    .navbar, .hero, .catalog-banner {
+        display: none;
+    }
+    
+    .dark-footer {
+        position: static;
+        border-top: 1px solid #000;
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333;
+        color: #f4f4f4;
+    }
+    
+    .navbar {
+        background-color: #444;
+    }
+    
+    .nav-links li a {
+        color: #f4f4f4;
+    }
+    
+    .dark-footer {
+        background-color: #222;
+        color: #f4f4f4;
+    }
+}

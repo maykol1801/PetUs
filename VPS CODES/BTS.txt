@@ -34,3 +34,9 @@ usuario para pruebas
 
 pruebas@petus.com
 Petus123!
+
+
+paypal sandbox accounts
+
+sb-xpk6a34339760@personal.example.com
+@w@2&MV0

@@ -68,7 +68,6 @@ document.addEventListener('click', (event) => {
     }
 });
 
-// Inicializar el botón de PayPal
 // Función para inicializar el botón de PayPal
 function initializePayPalButton() {
     paypal.Buttons({
@@ -87,60 +86,76 @@ function initializePayPalButton() {
         onApprove: function (data, actions) {
             return actions.order.capture().then(function (details) {
                 alert('Pago completado con éxito por ' + details.payer.name.given_name);
-
+        
                 // Obtener los detalles del formulario de envío
                 const shippingForm = document.getElementById('shipping-form');
                 const formData = new FormData(shippingForm);
                 const shippingData = {
-                    address: formData.get('address'),
-                    city: formData.get('city'),
-                    country: formData.get('country'),
-                    postalCode: formData.get('postal-code'),
-                    fullName: formData.get('full-name'),
-                    phone: formData.get('phone'),
+                    direccion: formData.get('address'),
+                    ciudad: formData.get('city'),
+                    pais: formData.get('country'),
+                    codigo_postal: formData.get('postal-code'),
+                    nombre_completo: formData.get('full-name'),
+                    telefono: formData.get('phone'),
                     email: formData.get('email')
                 };
-
+        
                 // Obtener los artículos del carrito
                 const cartItems = JSON.parse(localStorage.getItem('carrito')) || [];
                 const productos = cartItems.map(item => ({
-                    nombre: item.titulo,
+                    nombre: item.titulo,  // Asegúrate de que "titulo" es el nombre correcto del producto en el carrito
                     cantidad: item.cantidad,
                     precio: item.precio,
                     total: item.precio * item.cantidad
                 }));
-
-                // Enviar los datos al backend para procesar la compra
-                fetch('/procesar-compra', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: shippingData.email,
-                        nombre_completo: shippingData.fullName,
-                        productos: productos
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Compra procesada:', data);
-                    // Redirigir al usuario a la página de agradecimiento
-                    window.location.href = '/thankyou.html';
-                })
-                .catch(error => {
-                    console.error('Error al procesar la compra:', error);
-                    alert('Hubo un problema al procesar tu compra. Intenta nuevamente.');
+        
+                // Verificar que los productos se están enviando correctamente
+                console.log('Productos del carrito:', productos);
+        
+                // Crear un formulario oculto y agregar los campos de envío y carrito
+                const hiddenForm = document.createElement('form');
+                hiddenForm.setAttribute('action', '/procesar-compra');
+                hiddenForm.setAttribute('method', 'POST');
+                hiddenForm.style.display = 'none';  // Ocultar el formulario
+        
+                // Agregar los datos del formulario de envío al formulario oculto
+                Object.keys(shippingData).forEach(key => {
+                    const input = document.createElement('input');
+                    input.setAttribute('type', 'hidden');
+                    input.setAttribute('name', key);
+                    input.setAttribute('value', shippingData[key]);
+                    hiddenForm.appendChild(input);
                 });
+        
+                // Agregar los productos del carrito al formulario oculto
+                const cartItemsInput = document.createElement('input');
+                cartItemsInput.setAttribute('type', 'hidden');
+                cartItemsInput.setAttribute('name', 'productos');  // Nombre correcto: productos
+                cartItemsInput.setAttribute('value', JSON.stringify(productos));  // Asegúrate de serializarlo correctamente
+                hiddenForm.appendChild(cartItemsInput);
+        
+                // Agregar el total de la compra al formulario oculto
+                const totalInput = document.createElement('input');
+                totalInput.setAttribute('type', 'hidden');
+                totalInput.setAttribute('name', 'total');
+                totalInput.setAttribute('value', details.purchase_units[0].amount.value);
+                hiddenForm.appendChild(totalInput);
+        
+                // Agregar el formulario oculto al documento
+                document.body.appendChild(hiddenForm);
+        
+                // Enviar el formulario oculto
+                hiddenForm.submit();
             });
         },
+        
         onError: function (err) {
             console.error('Ocurrió un error con PayPal:', err);
             alert('Hubo un problema con el pago. Inténtalo de nuevo.');
         }
+        
     }).render('#paypal-button-container'); // Renderizar dentro del contenedor
 }
-
 
 // Función para inicializar el checkout
 function initCheckout() {

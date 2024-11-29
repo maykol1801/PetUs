@@ -1,0 +1,37 @@
+server {
+    server_name petus.lat www.petus.lat;
+
+    # Servir los archivos estáticos desde el directorio correcto
+    root /var/www/PetUsByExydos;
+    index index.html;
+
+    # Primero intenta servir los archivos estáticos, si no los encuentra, redirige a Express
+    location / {
+        try_files $uri $uri/ @node;  # Intenta servir archivos estáticos, sino pasa a Express
+    }
+
+    # Redirigir a tu servidor Node.js (Express) en el puerto 3000 para otras rutas
+    location @node {
+        proxy_pass http://localhost:3000;  # Redirigir a tu servidor de Node.js en el puerto 3000
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    listen 443 ssl;  # Habilitar SSL
+    ssl_certificate /etc/letsencrypt/live/petus.lat/fullchain.pem;  # Certificado SSL
+    ssl_certificate_key /etc/letsencrypt/live/petus.lat/privkey.pem;  # Clave privada del certificado
+    include /etc/letsencrypt/options-ssl-nginx.conf;  # Parámetros de seguridad SSL
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;  # Parámetros Diffie-Hellman de seguridad SSL
+}
+
+# Bloque para redirigir todas las solicitudes HTTP a HTTPS
+server {
+    listen 80;
+    server_name petus.lat www.petus.lat;
+
+    # Redirigir todas las solicitudes HTTP a HTTPS
+    return 301 https://$host$request_uri;  # Asegura que todas las peticiones HTTP se redirijan a HTTPS
+}
